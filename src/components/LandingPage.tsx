@@ -247,42 +247,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
   const [tickerSpeed, setTickerSpeed] = useState<'slow' | 'normal' | 'fast'>('normal');
   const [liveEventCount, setLiveEventCount] = useState(2480);
 
-  // Rerun in Autopilot Playground Action
-  const handleRerunInPlayground = (item?: any) => {
-    playSuccessChime();
-    triggerConfetti();
 
-    if (item) {
-      const text = (item.text || '').toLowerCase();
-      if (text.includes('dental') || text.includes('orthodontics')) {
-        setSandboxIndustry('Dental Clinic');
-      } else if (text.includes('law') || text.includes('legal') || text.includes('injury')) {
-        setSandboxIndustry('Personal Injury Law');
-      } else if (text.includes('medspa') || text.includes('aesthetics')) {
-        setSandboxIndustry('MedSpa & Aesthetics');
-      } else if (text.includes('roofing') || text.includes('solar')) {
-        setSandboxIndustry('Roofing & Solar Contractor');
-      } else if (text.includes('e-commerce') || text.includes('ecommerce')) {
-        setSandboxIndustry('E-Commerce Brand');
-      }
-
-      if (item.metrics && Array.isArray(item.metrics)) {
-        const clientMetric = item.metrics.find((m: any) => m.label && m.label.toLowerCase().includes('client'));
-        if (clientMetric && clientMetric.value) {
-          setCustomBusinessName(clientMetric.value);
-        }
-      }
-    }
-
-    const elem = document.getElementById('sandbox-demo');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    setTimeout(() => {
-      runSandboxSimulation();
-    }, 400);
-  };
 
   // Live Stream Event Simulator with variable speed & pause support
   React.useEffect(() => {
@@ -391,7 +356,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
     { tag: 'World First', name: 'AI Search Mint (AEO)', color: 'text-indigo-600', icon: Search, bg: 'bg-indigo-50 border-indigo-200', desc: 'Gets your business cited when potential clients ask ChatGPT or Perplexity for a recommendation.' },
     { tag: 'World First', name: 'ProfitMint Autopilot', color: 'text-sky-600', icon: Zap, bg: 'bg-sky-50 border-sky-200', desc: 'Runs every 4 hours: analyses what worked, shifts effort to what earns the most.' },
     { tag: 'New Category', name: 'Lead Mint Scorer', color: 'text-amber-600', icon: Target, bg: 'bg-amber-50 border-amber-200', desc: 'Forecasts outcomes before acting and scores every lead by likelihood to close.' },
-    { tag: 'WhatsApp First', name: 'WhatsApp Mint Agent', color: 'text-blue-600', icon: Phone, bg: 'bg-blue-50 border-blue-200', desc: 'Speak commands and receive morning voice briefings, right inside WhatsApp.' },
+    { tag: 'WhatsApp First', name: 'WhatsApp Mint Agent', color: 'text-blue-600', icon: Phone, bg: 'bg-blue-50 border-blue-200', desc: 'Speak commands to your AI agent and get instant actions executed, right inside WhatsApp.' },
     { tag: 'Best in Class', name: 'Autonomous Closing Vault', color: 'text-red-600', icon: ShieldCheck, bg: 'bg-red-50 border-red-200', desc: '6-stage pipeline: scoring, outreach, voice pre-qual, booking, video proposal, e-sign.' },
     { tag: 'New Pillar', name: 'LTV Mint Pulse', color: 'text-blue-600', icon: TrendingUp, bg: 'bg-blue-50 border-blue-200', desc: 'Client health scoring, upsell detection, referral automation, and review generation.' },
     { tag: 'Always On', name: 'Mint Approval Queue', color: 'text-sky-600', icon: CheckCircle, bg: 'bg-sky-50 border-sky-200', desc: 'One-tap approve or reject high-value proposals right from your mobile phone.' },
@@ -451,7 +416,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans relative overflow-x-hidden selection:bg-blue-500/20 selection:text-slate-900">
+    <div className="min-h-screen bg-white text-slate-900 font-sans relative overflow-x-hidden selection:bg-blue-500/20 selection:text-slate-900" style={{ zoom: 0.7 }}>
       
       {/* GLOBAL SVG DEFS */}
       <svg className="hidden">
@@ -628,7 +593,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             <div className="flex items-center shrink-0 gap-2 pl-1">
               {!selectedTicker ? (
                 <span className="text-[10px] text-slate-400 font-mono font-bold bg-[#0d1527] px-3 py-1 rounded-full border border-[#1e293b] shadow-xs flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Click event to inspect &amp; run
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Click event to inspect
                 </span>
               ) : (
                 <span className="text-[10px] text-emerald-400 font-mono font-bold bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/40 shadow-xs flex items-center gap-1.5">
@@ -760,26 +725,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
 
               </div>
 
-              {/* Full Width Dedicated Action Banner */}
-              <div className="pt-3 border-t border-[#1e293b] flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#070b16] p-4 rounded-xl">
-                <div className="flex items-center gap-2.5 text-left">
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/40 flex items-center justify-center shrink-0">
-                    <Sparkles className="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">Test this exact event live in Autopilot Playground</div>
-                    <div className="text-[10px] text-slate-400 font-mono">Runs real-time lead scan, website audit, and video proposal pitch script generation</div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => handleRerunInPlayground(selectedTicker)}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-black text-xs shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] uppercase tracking-wider font-mono border border-purple-400/40 shrink-0"
-                >
-                  <RefreshCw className="w-4 h-4 text-purple-200 animate-spin-slow" />
-                  <span>RERUN IN AUTOPILOT PLAYGROUND</span>
-                </button>
-              </div>
 
             </div>
           )}
@@ -816,13 +761,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                 className="bg-blue-600 hover:bg-blue-700 text-white font-black text-base px-8 py-4 rounded-xl shadow-md transition-all hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
               >
                 Launch AI Client Acquisition — $47 <ArrowRight className="w-5 h-5" />
-              </button>
-
-              <button 
-                onClick={() => handleCtaClick('demo')}
-                className="bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-bold text-base px-6 py-4 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Sparkles className="w-5 h-5 text-blue-600" /> Test Live Sandbox
               </button>
             </div>
 
@@ -877,11 +815,11 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
       {/* BENEFIT GRID (4 Rich Core Benchmark Cards) */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto space-y-8">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <div className="text-center space-y-3 max-w-4xl mx-auto overflow-hidden">
             <span className="text-xs font-bold text-blue-700 uppercase tracking-widest bg-blue-100/80 px-3.5 py-1.5 rounded-full border border-blue-200 inline-block">
               CORE CAPABILITIES
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight pt-1">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight pt-1 whitespace-nowrap">
               Engineered for Autonomous Client Acquisition
             </h2>
           </div>
@@ -899,10 +837,10 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2">
                   {/* Search Header Bar */}
                   <div className="w-full bg-[#e0f2fe]/80 rounded-xl p-2 border border-sky-200/70 flex items-center justify-between gap-1 text-[10px]">
@@ -947,10 +885,10 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2 relative">
                   {/* Outcome Action Card */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-orange-200 shadow-sm space-y-1.5 text-left relative pt-3">
@@ -1006,10 +944,10 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2">
                   {/* Inbox Card */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-1">
@@ -1020,7 +958,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     <div className="text-[8px] font-bold text-slate-400 pt-0.5">Filter: Channel</div>
                     <div className="space-y-1 pt-0.5">
                       <div className="text-[9px] text-slate-700 flex items-center justify-between">
-                        <span className="font-bold text-slate-900 flex items-center gap-1">Jessica Miller <span className="text-blue-600">✓</span></span>
+                        <span className="font-bold text-slate-900 flex items-center gap-1">Sarah Park <span className="text-blue-600">✓</span></span>
                         <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
                       </div>
                       <div className="text-[8px] text-slate-500 line-clamp-1 bg-slate-50 p-1 rounded border border-slate-100">
@@ -1054,17 +992,17 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2 relative">
                   {/* Chat Bubble 1 */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-1">
                     <div className="flex items-center justify-between text-[10px]">
                       <div className="flex items-center gap-1.5 font-extrabold text-slate-900">
-                        <img src="/jessica.jpg" alt="Jessica" className="w-5 h-5 rounded-full object-cover" />
-                        Jessica Miller <span className="text-blue-600">✓</span>
+                        <img src="/avatar_1.jpg" alt="Sarah" className="w-5 h-5 rounded-full object-cover shadow-sm" />
+                        Sarah Park <span className="text-blue-600">✓</span>
                       </div>
                       <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
                     </div>
@@ -1125,9 +1063,26 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
             {pillars.map((p, i) => {
               const Icon = p.icon;
+              
+              // Bento layout logic
+              const getBentoClass = (index: number) => {
+                switch(index) {
+                  case 0: return 'md:col-span-4';
+                  case 1: return 'md:col-span-2';
+                  case 2: return 'md:col-span-2';
+                  case 3: return 'md:col-span-2';
+                  case 4: return 'md:col-span-2';
+                  case 5: return 'md:col-span-3';
+                  case 6: return 'md:col-span-3';
+                  case 7: return 'md:col-span-2';
+                  case 8: return 'md:col-span-4';
+                  default: return 'md:col-span-2';
+                }
+              };
+
               return (
                 <motion.div 
                   key={i} 
@@ -1135,31 +1090,63 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white rounded-[28px] border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+                  className={`bg-white rounded-[28px] border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group ${getBentoClass(i)}`}
                 >
                   {/* TOP PREVIEW GRAPHIC BOX (Benchmark Style) */}
-                  <div className="bg-slate-100/80 rounded-2xl p-4 h-[190px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/60 mb-5 select-none">
+                  <div className="bg-slate-200/50 shadow-inner rounded-2xl py-4 h-[190px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/60 mb-5 select-none">
                     {i === 0 && (
-                      <div className="w-full flex flex-col justify-center items-center gap-2">
-                        <div className="w-full bg-blue-100/70 rounded-xl p-2 border border-blue-200/60 flex items-center justify-between gap-1 text-[10px]">
-                          <div className="bg-white px-2.5 py-1 rounded-md text-slate-700 font-bold shadow-2xs flex-1 text-left">
-                            Keyword: Dental Implants
+                      <div className="w-full h-full flex flex-col gap-3">
+                        <div className="flex items-center justify-between bg-white/80 p-3 rounded-xl border border-white/60 shadow-sm backdrop-blur-sm">
+                          <div className="flex items-center gap-2">
+                             <Search className="w-4 h-4 text-blue-500" />
+                             <span className="text-[11px] sm:text-xs font-bold text-slate-700">Keyword: Dental Implants</span>
                           </div>
-                          <div className="bg-white px-2 py-1 rounded-md text-slate-500 font-medium shadow-2xs">Status</div>
-                          <div className="bg-white px-2 py-1 rounded-md text-slate-500 font-medium shadow-2xs">Filter</div>
+                          <div className="flex gap-2">
+                            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[9px] sm:text-[10px] font-bold shadow-xs">Active</span>
+                            <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[9px] sm:text-[10px] font-bold shadow-xs flex items-center gap-1">Filter</span>
+                          </div>
                         </div>
-                        <div className="w-full bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-center justify-between text-left">
-                          <div>
-                            <div className="text-[11px] font-black text-slate-900">+150 Leads Attributed</div>
-                            <div className="w-24 h-1.5 bg-slate-200 rounded-full mt-1.5 overflow-hidden">
-                              <div className="bg-blue-600 h-full w-[80%]" />
+                        
+                        <div className="flex-1 bg-white rounded-xl border border-slate-200 shadow-lg p-4 flex flex-col justify-between">
+                          <div className="flex items-start justify-between">
+                            <div className="text-left">
+                              <div className="text-[9px] sm:text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Total Attributed Revenue</div>
+                              <div className="text-xl sm:text-2xl font-black text-slate-900 mt-0.5">$42,500</div>
+                            </div>
+                            <div className="bg-emerald-50 text-emerald-600 border border-emerald-100 px-2 py-1 rounded-lg text-[10px] font-bold flex items-center gap-1 shadow-sm">
+                              <TrendingUp className="w-3 h-3" /> +24%
                             </div>
                           </div>
-                          <div className="flex items-center -space-x-2">
-                            <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-[9px] font-bold border-2 border-white">RD</div>
-                            <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px] font-bold border-2 border-white">CL</div>
-                            <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[9px] font-bold border-2 border-white">AC</div>
-                            <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-black border-2 border-white">100+</div>
+                          
+                          <div className="space-y-3 mt-4 flex-1">
+                            {[
+                              { source: 'AI Search (Perplexity)', amount: '$12,000', leads: 45, color: 'bg-indigo-500' },
+                              { source: 'Automated Outreach', amount: '$18,500', leads: 62, color: 'bg-blue-500' },
+                              { source: 'WhatsApp Conversions', amount: '$12,000', leads: 43, color: 'bg-emerald-500' }
+                            ].map((item, idx) => (
+                              <div key={idx} className="flex items-center justify-between group">
+                                <div className="flex items-center gap-2.5">
+                                  <div className={`w-2 h-2 rounded-full ${item.color} shadow-sm group-hover:scale-150 transition-transform`} />
+                                  <span className="text-[10px] sm:text-[11px] font-bold text-slate-600">{item.source}</span>
+                                </div>
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                  <span className="text-[9px] sm:text-[10px] text-slate-400 font-medium">{item.leads} leads</span>
+                                  <span className="text-[10px] sm:text-[11px] font-black text-slate-800 w-12 text-right">{item.amount}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <div className="mt-2 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div className="flex items-center -space-x-2">
+                              <img src="/avatar_1.jpg" alt="RD" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-30" />
+                              <img src="/avatar_2.jpg" alt="CL" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-20" />
+                              <img src="/avatar_3.jpg" alt="AC" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-10" />
+                              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[8px] sm:text-[9px] font-black border-2 border-white shadow-sm z-0">150+</div>
+                            </div>
+                            <div className="text-[9px] sm:text-[10px] text-blue-600 font-bold bg-blue-50 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors">
+                              View Full Report &rarr;
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1187,7 +1174,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                         </div>
                         <div className="w-full bg-white rounded-xl p-2 border border-slate-200 shadow-md flex items-center justify-between text-left text-[10px]">
                           <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[9px] font-black">SJ</div>
+                            <img src="/sarah.jpg" alt="Elena Rodriguez" className="w-6 h-6 rounded-full object-cover border border-slate-200" />
                             <div>
                               <div className="font-extrabold text-slate-900 text-[10px]">Elena Rodriguez <span className="text-blue-600">✓</span></div>
                               <div className="text-[8px] text-emerald-600 font-bold">Completed call 03:01 AM</div>
@@ -1230,8 +1217,8 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                         <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-2">
                           <div className="flex items-center justify-between text-[10px]">
                             <div className="flex items-center gap-1.5 font-extrabold text-slate-900">
-                              <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[9px]">JM</div>
-                              Jessica Miller <span className="text-blue-600">✓</span>
+                              <img src="/avatar_1.jpg" alt="Sarah Park" className="w-6 h-6 rounded-full object-cover border border-slate-200 shadow-sm" />
+                              Sarah Park <span className="text-blue-600">✓</span>
                             </div>
                             <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
                           </div>
@@ -1250,61 +1237,108 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     )}
 
                     {i === 4 && (
-                      <div className="w-full bg-emerald-950 text-white rounded-2xl p-3 border border-emerald-800 shadow-sm space-y-2 text-left relative overflow-hidden">
-                        <div className="flex items-center justify-between text-[10px]">
-                          <div className="flex items-center gap-1.5 font-extrabold text-emerald-300">
-                            <Phone className="w-3 h-3 text-emerald-400" /> WhatsApp Voice Briefing
-                          </div>
-                          <span className="text-[8px] bg-emerald-900 text-emerald-200 px-1.5 py-0.5 rounded font-mono">08:00 AM</span>
+                      <div className="w-full h-full flex flex-col justify-end p-3 bg-[#efeae2] rounded-2xl relative overflow-hidden border border-slate-200">
+                        {/* Fake chat background */}
+                        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+                        
+                        <div className="bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[9px] sm:text-[10px] font-bold text-slate-500 shadow-sm self-center mb-auto mt-2 relative z-10">
+                          Today
                         </div>
-                        <div className="bg-emerald-900/90 rounded-xl p-2 flex items-center gap-2 border border-emerald-700/60">
-                          <div className="w-6 h-6 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center font-black text-[9px] shrink-0">
-                            ▶
+                        
+                        <div className="w-[95%] self-end bg-[#dcf8c6] rounded-2xl rounded-tr-sm p-3 shadow-sm relative z-10 border border-[#cde8b8] mb-3">
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                              <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-0.5 fill-current" />
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex items-center gap-0.5 sm:gap-1 h-5 sm:h-6">
+                                {[20, 30, 80, 50, 40, 90, 100, 60, 40, 50, 30, 70, 40, 20].map((h, idx) => (
+                                  <div key={idx} className={`flex-1 rounded-full ${idx < 8 ? 'bg-emerald-500' : 'bg-emerald-300'}`} style={{ height: `${h}%` }} />
+                                ))}
+                              </div>
+                              <div className="flex items-center justify-between mt-1.5">
+                                <span className="text-[9px] sm:text-[10px] text-emerald-700 font-bold">0:08</span>
+                                <div className="flex items-center gap-1">
+                                  <span className="text-[8px] sm:text-[9px] text-emerald-700 font-medium">10:14 AM</span>
+                                  <span className="text-blue-500 text-[10px] font-bold tracking-tighter">✓✓</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
+                              <img src="/avatar_1.jpg" className="w-full h-full object-cover" alt="You" />
+                            </div>
                           </div>
-                          <div className="flex-1 flex items-center gap-0.5 h-4">
-                            {[40, 70, 30, 90, 60, 100, 50, 80, 40, 90, 60, 30, 70, 50].map((h, idx) => (
-                              <div key={idx} className="flex-1 bg-emerald-400 rounded-full" style={{ height: `${h}%` }} />
-                            ))}
+                        </div>
+
+                        <div className="w-[85%] self-start bg-white rounded-2xl rounded-tl-sm p-3 shadow-sm relative z-10 border border-slate-100">
+                          <div className="text-[10px] sm:text-[11px] font-black text-emerald-600 mb-1">ProfitMint AI</div>
+                          <div className="text-[10px] sm:text-[11px] text-slate-700 leading-snug space-y-1.5">
+                            <div>Done! I've drafted a $5k video proposal for Apex Dental and queued it up.</div>
+                            <div className="text-blue-600 font-bold bg-blue-50 p-1.5 rounded-lg border border-blue-100 inline-block">Review Proposal →</div>
                           </div>
-                          <span className="text-[8px] text-emerald-300 font-mono shrink-0">0:42</span>
+                          <div className="text-[8px] text-slate-400 text-right mt-1 font-medium">10:15 AM</div>
                         </div>
                       </div>
                     )}
 
                     {i === 5 && (
-                      <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm space-y-2">
-                        <div className="flex items-center justify-between text-[9px] font-extrabold text-slate-800 border-b border-slate-100 pb-1">
-                          <span>6-Stage Closing Engine</span>
-                          <span className="text-blue-600 bg-blue-50 px-2 py-0.5 rounded font-bold">Stage 5: Proposal</span>
+                      <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg space-y-6">
+                        <div className="flex items-center justify-between text-xs sm:text-sm font-black text-slate-800 border-b border-slate-100 pb-3">
+                          <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-blue-600" /> 6-Stage Closing Engine</span>
+                          <span className="text-blue-700 bg-blue-50 px-3 py-1 rounded-md shadow-sm border border-blue-100 text-[10px] sm:text-xs">Stage 5: Proposal</span>
                         </div>
-                        <div className="grid grid-cols-6 gap-1 text-[8px] text-center font-extrabold">
-                          {['Score', 'Reach', 'Call', 'Book', 'Video', 'Sign'].map((stg, idx) => (
-                            <div key={idx} className={`p-1 rounded ${idx <= 4 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
-                              {stg}
-                            </div>
-                          ))}
+                        
+                        <div className="relative">
+                          <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 rounded-full" />
+                          <div className="absolute top-1/2 left-0 w-[83%] h-1 bg-blue-500 -translate-y-1/2 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+                          
+                          <div className="grid grid-cols-6 gap-2 text-[9px] sm:text-[10px] text-center font-extrabold relative z-10">
+                            {[
+                              { name: 'Score', icon: <Target className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Reach', icon: <Mail className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Call', icon: <Phone className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Book', icon: <Calendar className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Video', icon: <Play className="w-3.5 h-3.5 mx-auto mb-1 fill-current" /> },
+                              { name: 'Sign', icon: <CheckCircle className="w-3.5 h-3.5 mx-auto mb-1" /> }
+                            ].map((stg, idx) => (
+                              <div key={idx} className={`py-2 px-1 rounded-xl transition-all duration-300 ${idx <= 4 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105' : 'bg-white text-slate-400 border-2 border-slate-100 shadow-sm'}`}>
+                                {stg.icon}
+                                <span>{stg.name}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div className="bg-slate-50 p-1.5 rounded-lg border border-slate-200 flex items-center justify-between text-[9px]">
-                          <span className="font-extrabold text-slate-800">Coastal Legal Proposal</span>
-                          <span className="text-emerald-600 font-black">$2,400/mo</span>
+
+                        <div className="bg-gradient-to-r from-slate-50 to-white p-4 rounded-xl border border-slate-200 flex items-center justify-between text-xs sm:text-sm shadow-sm">
+                          <span className="font-extrabold text-slate-800 flex items-center gap-2"><FileText className="w-4 h-4 text-slate-400" /> Coastal Legal Proposal</span>
+                          <span className="text-emerald-600 font-black bg-emerald-50 px-2 py-1 rounded-md border border-emerald-100">$2,400/mo</span>
                         </div>
                       </div>
                     )}
 
                     {i === 6 && (
-                      <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm space-y-2 text-left">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-black text-slate-900">Apex Consulting</span>
-                          <span className="text-[9px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300 px-2 py-0.5 rounded-full">
-                            Health 8/10
+                      <div className="w-full bg-white rounded-2xl p-6 border border-slate-200 shadow-lg space-y-5 text-left">
+                        <div className="flex items-center justify-between pb-2 border-b border-slate-50">
+                          <span className="text-sm font-black text-slate-900 flex items-center gap-2"><Activity className="w-4 h-4 text-emerald-500" /> Apex Consulting</span>
+                          <span className="text-[10px] sm:text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-300 px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" /> Health 8/10
                           </span>
                         </div>
-                        <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                          <div className="bg-emerald-500 h-full w-[80%]" />
+                        
+                        <div className="space-y-1.5">
+                          <div className="flex justify-between text-[10px] font-bold text-slate-500">
+                            <span>Client Retention Score</span>
+                            <span className="text-emerald-600">80%</span>
+                          </div>
+                          <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200 shadow-inner relative">
+                            <div className="absolute top-0 left-0 h-full w-[80%] bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full" />
+                          </div>
                         </div>
-                        <div className="bg-blue-50 p-1.5 rounded-lg border border-blue-200 flex items-center justify-between text-[9px]">
-                          <span className="font-bold text-blue-900">Upsell Trigger Detected</span>
-                          <span className="text-blue-600 font-extrabold">+ $800/mo</span>
+
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50/50 p-3.5 rounded-xl border border-blue-200/60 flex items-center justify-between text-xs sm:text-sm shadow-sm mt-3 relative overflow-hidden group">
+                          <div className="absolute inset-0 bg-blue-400/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                          <span className="font-bold text-blue-900 flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-blue-600" /> Upsell Trigger Detected</span>
+                          <span className="text-blue-700 font-black bg-white/60 px-2 py-1 rounded-md relative z-10">+ $800/mo</span>
                         </div>
                       </div>
                     )}
@@ -1330,22 +1364,34 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     )}
 
                     {i === 8 && (
-                      <div className="w-full bg-white rounded-xl p-3 border border-slate-200 shadow-sm space-y-2">
-                        <div className="text-[9px] font-extrabold text-slate-500 uppercase tracking-wider text-center">
-                          Plug & Play Ecosystem
+                      <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg space-y-6">
+                        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                          <span className="text-xs sm:text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                            <Zap className="w-4 h-4 text-indigo-500 fill-indigo-500" /> Plug & Play Ecosystem
+                          </span>
+                          <span className="bg-emerald-50 text-emerald-600 px-2.5 py-0.5 rounded-full text-[10px] font-bold border border-emerald-200 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Live Sync
+                          </span>
                         </div>
-                        <div className="grid grid-cols-4 gap-2 pt-1">
+                        
+                        <div className="relative flex justify-between items-center w-[90%] mx-auto">
+                          {/* Continuous connection line */}
+                          <div className="absolute top-[32%] left-0 w-full h-1 bg-slate-100 -translate-y-1/2 rounded-full overflow-hidden">
+                            <div className="h-full bg-indigo-500/30 w-full animate-pulse" />
+                          </div>
+                          
+                          {/* Nodes */}
                           {[
-                            { name: 'Stripe', bg: 'bg-indigo-100 text-indigo-700', icon: 'S' },
-                            { name: 'Calendar', bg: 'bg-blue-100 text-blue-700', icon: 'C' },
-                            { name: 'CRM', bg: 'bg-emerald-100 text-emerald-700', icon: 'M' },
-                            { name: 'WhatsApp', bg: 'bg-green-100 text-green-700', icon: 'W' }
+                            { name: 'Stripe', bg: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: <DollarSign className="w-5 h-5" /> },
+                            { name: 'Calendar', bg: 'bg-blue-100 text-blue-700 border-blue-200', icon: <Calendar className="w-5 h-5" /> },
+                            { name: 'CRM', bg: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: <Settings className="w-5 h-5" /> },
+                            { name: 'WhatsApp', bg: 'bg-green-100 text-green-700 border-green-200', icon: <MessageSquare className="w-5 h-5" /> }
                           ].map((item, idx) => (
-                            <div key={idx} className="flex flex-col items-center gap-1">
-                              <div className={`w-7 h-7 rounded-lg ${item.bg} font-black text-xs flex items-center justify-center border border-slate-200 shadow-2xs`}>
+                            <div key={idx} className="relative z-10 flex flex-col items-center gap-3 group">
+                              <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center border-2 shadow-sm group-hover:scale-110 transition-transform duration-300 group-hover:shadow-md bg-opacity-90 backdrop-blur-sm`}>
                                 {item.icon}
                               </div>
-                              <span className="text-[8px] font-bold text-slate-600">{item.name}</span>
+                              <span className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-2 py-0.5 rounded-md shadow-2xs border border-slate-100">{item.name}</span>
                             </div>
                           ))}
                         </div>
@@ -1389,10 +1435,15 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
           {/* 3 BENCHMARK STEP CARDS */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* STEP 01 */}
-            <div className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
+            <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
-                <div className="w-full flex flex-col justify-center items-center gap-2 relative">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[240px] w-full flex flex-col relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+                <div className="flex justify-end w-full shrink-0">
+                  <div className="bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800 z-10">
+                    01
+                  </div>
+                </div>
+                <div className="w-full flex-1 flex flex-col justify-center items-center gap-2 relative z-0 mt-2">
                   {/* Onboarding Form Mockup */}
                   <div className="w-full bg-white rounded-xl p-3 border border-slate-200 shadow-sm space-y-2 text-left">
                     <div className="flex items-center justify-between text-[10px]">
@@ -1419,10 +1470,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     </span>
                     <span className="text-[8px] bg-emerald-600 text-white font-black px-1.5 py-0.5 rounded">Active</span>
                   </div>
-                  {/* Step Number Tag */}
-                  <div className="absolute -top-1 -right-1 bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800">
-                    01
-                  </div>
                 </div>
               </div>
 
@@ -1441,10 +1488,15 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             </div>
 
             {/* STEP 02 */}
-            <div className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
+            <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
-                <div className="w-full flex flex-col justify-center items-center gap-2 relative">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[240px] w-full flex flex-col relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+                <div className="flex justify-end w-full shrink-0">
+                  <div className="bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800 z-10">
+                    02
+                  </div>
+                </div>
+                <div className="w-full flex-1 flex flex-col justify-center items-center gap-2 relative z-0 mt-2">
                   {/* Automated Execution Pipeline */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm space-y-2 text-left">
                     <div className="flex items-center justify-between text-[10px]">
@@ -1476,10 +1528,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     </div>
                     <span className="text-[8px] text-emerald-400 font-mono font-bold">$4,800/mo</span>
                   </div>
-                  {/* Step Number Tag */}
-                  <div className="absolute -top-1 -right-1 bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800">
-                    02
-                  </div>
                 </div>
               </div>
 
@@ -1498,41 +1546,52 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             </div>
 
             {/* STEP 03 */}
-            <div className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
+            <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
-                <div className="w-full flex flex-col justify-center items-center gap-2 relative">
-                  {/* WhatsApp Voice Briefing Card */}
-                  <div className="w-full bg-emerald-950 text-white rounded-xl p-3 border border-emerald-800 shadow-md space-y-2 text-left">
-                    <div className="flex items-center justify-between text-[10px]">
-                      <span className="font-extrabold text-emerald-300 flex items-center gap-1.5">
-                        <MessageSquare className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20" /> WhatsApp Morning Briefing
-                      </span>
-                      <span className="text-[8px] bg-emerald-900 text-emerald-200 px-1.5 py-0.5 rounded font-mono">08:00 AM</span>
-                    </div>
-                    <div className="bg-emerald-900/90 rounded-lg p-2 flex items-center gap-2 border border-emerald-700/60">
-                      <div className="w-6 h-6 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center font-black text-[9px] shrink-0 shadow-2xs">
-                        ▶
-                      </div>
-                      <div className="flex-1 flex items-center gap-0.5 h-4">
-                        {[40, 70, 30, 90, 60, 100, 50, 80, 40, 90, 60, 30, 70, 50].map((h, idx) => (
-                          <div key={idx} className="flex-1 bg-emerald-400 rounded-full" style={{ height: `${h}%` }} />
-                        ))}
-                      </div>
-                      <span className="text-[8px] text-emerald-300 font-mono shrink-0">0:42</span>
-                    </div>
-                  </div>
-                  {/* Revenue Summary Pill */}
-                  <div className="w-full bg-white rounded-xl p-2 border border-slate-200 shadow-xs flex items-center justify-between text-[10px] text-slate-900 font-extrabold">
-                    <span className="flex items-center gap-1 text-emerald-700">
-                      <TrendingUp className="w-3 h-3" /> +$4,800 Earned Overnight
-                    </span>
-                    <span className="text-slate-500 font-medium">2 Calls Booked</span>
-                  </div>
-                  {/* Step Number Tag */}
-                  <div className="absolute -top-1 -right-1 bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[240px] w-full flex flex-col relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+                <div className="flex justify-end w-full shrink-0">
+                  <div className="bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800 z-10">
                     03
                   </div>
+                </div>
+                <div className="w-full flex-1 flex flex-col justify-center items-center relative z-0">
+                  
+                  <div className="w-full h-full flex flex-col justify-end p-2 sm:p-3 bg-[#efeae2] rounded-xl relative overflow-hidden border border-slate-200 shadow-sm mt-2">
+                    {/* Fake chat background */}
+                    <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+                    
+                    <div className="w-[85%] self-start bg-white rounded-2xl rounded-tl-sm p-2 sm:p-2.5 shadow-sm relative z-10 mb-2 border border-slate-100">
+                      <div className="text-[9px] sm:text-[10px] font-black text-emerald-600 mb-1">ProfitMint AI</div>
+                      <div className="text-[9px] sm:text-[10px] text-slate-700 leading-snug">
+                        Morning! Added $4,800 to pipeline overnight. 2 calls booked.
+                      </div>
+                      <div className="text-[7px] sm:text-[8px] text-slate-400 text-right mt-1 font-medium">07:59 AM</div>
+                    </div>
+
+                    <div className="w-[95%] self-end bg-[#dcf8c6] rounded-2xl rounded-tr-sm p-2 sm:p-2.5 shadow-sm relative z-10 border border-[#cde8b8] mb-1">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                          <Play className="w-3 h-3 ml-0.5 fill-current" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-0.5 h-4 sm:h-5">
+                            {[30, 50, 40, 80, 60, 100, 40, 70, 30, 90, 50, 60, 30, 80, 40].map((h, idx) => (
+                              <div key={idx} className={`flex-1 rounded-full ${idx < 5 ? 'bg-emerald-500' : 'bg-emerald-300'}`} style={{ height: `${h}%` }} />
+                            ))}
+                          </div>
+                          <div className="flex items-center justify-between mt-1">
+                            <span className="text-[8px] sm:text-[9px] text-emerald-700 font-bold">0:42</span>
+                            <div className="flex items-center gap-1">
+                              <span className="text-[7px] sm:text-[8px] text-emerald-700 font-medium">08:00 AM</span>
+                              <span className="text-blue-500 text-[8px] font-bold tracking-tighter">✓✓</span>
+                            </div>
+                          </div>
+                        </div>
+                        <img src="/avatar_1.jpg" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-emerald-100 shadow-sm object-cover" alt="Agent" />
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
