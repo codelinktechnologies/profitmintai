@@ -123,7 +123,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
       triggerConfetti();
       setSandboxResult({
         businessName: activeName,
-        decisionMaker: 'Sarah Jenkins, Managing Director',
+        decisionMaker: 'Elena Rodriguez, Managing Director',
         email: `contact@${activeIndustry.toLowerCase().replace(/[^a-z0-9]/g, '')}${sandboxLocation.split(',')[0].toLowerCase().trim()}.com`,
         phone: '+1 (800) 555-0144',
         techGaps: ['Missing Retargeting Pixel', 'Mobile Score: 38/100', 'No Instant Lead Response AI', 'Missing Video Testimonials'],
@@ -419,14 +419,14 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
       quote: 'The WhatsApp Mint briefing is the first thing I listen to every morning. It tells me exactly what earned overnight.', 
       name: 'Marcus T.', 
       role: 'Business coach', 
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250&h=250',
+      image: '/marcus.jpg',
       color: 'from-blue-600 to-indigo-700' 
     },
     { 
       quote: 'Set it up in nine questions. Four hours later it had already minted two $2,400 retainers.', 
       name: 'Priya K.', 
       role: 'Marketing agency owner', 
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=250&h=250',
+      image: '/priya.jpg',
       color: 'from-indigo-600 to-purple-700' 
     }
   ];
@@ -870,618 +870,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
 
         </div>
 
-        {/* PROFITMINT AI INTERACTIVE REVENUE & PROPOSAL MINT CONSOLE */}
-        <div id="sandbox-demo" className="max-w-6xl mx-auto mt-20 bg-slate-50 border border-slate-300 rounded-xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15),0_0_1px_rgba(0,0,0,0.1)] overflow-hidden text-left relative text-slate-900 ring-1 ring-white/50">
-          
-          {/* Subtle Grid Backdrop */}
-          <div className="absolute inset-0 opacity-[0.6] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#cbd5e1 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }}></div>
 
-          {/* Header Bar: System Chrome */}
-          <div className="bg-white/95 backdrop-blur-2xl px-10 py-6 border-b border-slate-200 flex flex-wrap items-center justify-between gap-4 text-slate-950 relative z-20 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
-            <div className="flex items-center gap-5">
-              <div className="flex gap-2.5">
-                <div className="w-3.5 h-3.5 rounded-full bg-rose-400/30 border border-rose-400/50 shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"></div>
-                <div className="w-3.5 h-3.5 rounded-full bg-amber-400/30 border border-amber-400/50 shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"></div>
-                <div className="w-3.5 h-3.5 rounded-full bg-emerald-400/30 border border-emerald-400/50 shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"></div>
-              </div>
-              <div className="h-6 w-px bg-slate-200 mx-2"></div>
-              <span className="text-[12px] font-black font-mono text-slate-700 tracking-[0.3em] flex items-center gap-3 uppercase">
-                <Sparkles className="w-4.5 h-4.5 text-blue-600 drop-shadow-sm" /> 
-                ProfitMint AI • Autonomous Revenue & Proposal Studio
-              </span>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-[10px] font-black text-blue-900 bg-blue-50 border border-blue-200 px-5 py-2 rounded-full uppercase tracking-[0.25em] font-mono flex items-center gap-2.5 shadow-sm">
-                <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse shadow-[0_0_10px_rgba(37,99,235,0.6)]"></span>
-                24/7 REVENUE MINT ENGINE ACTIVE
-              </span>
-            </div>
-          </div>
-
-          <div className="p-6 sm:p-10 space-y-8 relative z-10">
-            
-            {/* THE CORE ENGINE (Chambers) */}
-            <div className="relative bg-white border border-slate-200 rounded-lg p-12 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.08),0_0_1px_rgba(0,0,0,0.1)] group ring-1 ring-slate-200/40">
-              
-              {/* Scanline Effect */}
-              <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-blue-500/10 to-transparent h-[200%] w-full -top-full group-hover:top-full transition-all duration-[4000ms] ease-linear opacity-30"></div>
-
-              {/* Section Subtitle */}
-              <div className="flex flex-wrap items-center justify-between gap-8 mb-12 relative z-10 border-b border-slate-100 pb-10">
-                <div>
-                  <div className="text-[12px] font-black font-mono uppercase text-blue-600 tracking-[0.4em] flex items-center gap-3 mb-3">
-                    <RefreshCw className="w-5 h-5 animate-spin-slow text-blue-500" /> 
-                    PROFITMINT PIPELINE PIPECODE v4.8
-                  </div>
-                  <h3 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight italic leading-tight">
-                    Autonomous Client Acquisition <br /> & Video Pitch Mint Matrix
-                  </h3>
-                </div>
-                <div className="text-[13px] font-mono text-slate-700 bg-white px-7 py-3.5 rounded-lg border border-slate-200 shadow-[0_4px_12px_rgba(0,0,0,0.03)] font-bold ring-1 ring-slate-100">
-                  Target Pipeline: <span className="text-blue-900 font-black tracking-tight underline decoration-blue-300 decoration-[3px] underline-offset-[6px]">$2,800/mo Retainers</span>
-                </div>
-              </div>
-
-              {/* 4 Interactive Chambers */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-                
-                {/* Chamber 1: Lead Scraper */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    playHoverTick();
-                    runSandboxSimulation();
-                  }}
-                  className={`p-6 rounded-md border text-left transition-all duration-500 cursor-pointer group relative overflow-hidden ${
-                    sandboxStep === 1 || sandboxRunning
-                      ? 'bg-blue-100 border-blue-600 shadow-[0_25px_50px_-12px_rgba(59,130,246,0.25)] ring-2 ring-blue-600/50 scale-[1.03] z-20'
-                      : 'bg-blue-50/40 hover:bg-blue-100/60 border-blue-200 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1)] hover:scale-[1.02] z-10'
-                  }`}
-                >
-                  {/* Wire Mesh Backdrop */}
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15] text-blue-900">
-                    <rect width="100%" height="100%" fill="url(#gen-wire-mesh)" />
-                  </svg>
-
-                  <div className="flex items-center justify-between mb-6 relative z-10">
-                    <div className="flex flex-col gap-2.5">
-                      <span className={`text-[11px] font-black font-mono uppercase tracking-[0.3em] px-3 py-1 rounded-lg border transition-colors w-fit ${
-                        sandboxStep === 1 || sandboxRunning
-                          ? 'text-white bg-blue-600 border-blue-700 shadow-lg shadow-blue-500/30'
-                          : 'text-blue-700 bg-blue-100 border-blue-200'
-                      }`}>
-                        CHAMBER 01
-                      </span>
-                      <span className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2.5 ${
-                        sandboxRunning && sandboxStep === 1 ? 'text-amber-800' : 'text-blue-950'
-                      }`}>
-                        <span className={`w-2 h-2 rounded-full ${sandboxRunning && sandboxStep === 1 ? 'bg-amber-600 animate-pulse shadow-[0_0_8px_rgba(217,119,6,0.5)]' : 'bg-blue-600 shadow-[0_0_12px_rgba(37,99,235,0.6)]'}`}></span>
-                        {sandboxRunning && sandboxStep === 1 ? 'Processing' : 'Active'}
-                      </span>
-                    </div>
-                    <span className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${sandboxStep === 1 ? 'bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.8)] animate-pulse scale-150' : 'bg-blue-200'}`}></span>
-                  </div>
-                  <div className="flex items-center gap-4 text-slate-950 font-black text-sm mb-4 group-hover:text-blue-900 transition-colors relative z-10">
-                    <div className={`w-12 h-12 rounded-md flex items-center justify-center border transition-all shadow-md group-hover:shadow-lg ${
-                      sandboxStep === 1 || sandboxRunning ? 'bg-blue-600 border-blue-700 text-white' : 'bg-white border-blue-200 text-blue-600'
-                    }`}>
-                      <Search className={`w-6 h-6 transition-colors`} />
-                    </div>
-                    <span className="text-lg tracking-tight font-black">B2B Lead Scraper</span>
-                  </div>
-                  <p className="text-[13px] text-slate-800 leading-relaxed font-bold relative z-10">Scans high-intent decision makers, emails & phone numbers.</p>
-                </button>
-
-                {/* Chamber 2: Gap Auditor */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    playHoverTick();
-                    if (!sandboxResult) {
-                      runSandboxSimulation();
-                    } else {
-                      playSuccessChime();
-                    }
-                  }}
-                  className={`p-6 rounded-md border text-left transition-all duration-500 cursor-pointer group relative overflow-hidden ${
-                    sandboxStep === 2
-                      ? 'bg-rose-100 border-rose-600 shadow-[0_25px_50px_-12px_rgba(244,63,94,0.25)] ring-2 ring-rose-600/50 scale-[1.03] z-20'
-                      : 'bg-rose-50/40 hover:bg-rose-100/60 border-rose-200 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1)] hover:scale-[1.02] z-10'
-                  }`}
-                >
-                  {/* Wire Mesh Backdrop */}
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15] text-rose-900">
-                    <rect width="100%" height="100%" fill="url(#gen-wire-mesh)" />
-                  </svg>
-
-                  <div className="flex items-center justify-between mb-6 relative z-10">
-                    <div className="flex flex-col gap-2.5">
-                      <span className={`text-[11px] font-black font-mono uppercase tracking-[0.3em] px-3 py-1 rounded-lg border transition-colors w-fit ${
-                        sandboxStep === 2
-                          ? 'text-white bg-rose-600 border-rose-700 shadow-lg shadow-rose-500/30'
-                          : 'text-rose-700 bg-rose-100 border-rose-200'
-                      }`}>
-                        CHAMBER 02
-                      </span>
-                      <span className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2.5 ${
-                        sandboxRunning && sandboxStep === 2 ? 'text-amber-800' : (sandboxResult ? 'text-rose-950' : 'text-rose-950')
-                      }`}>
-                        <span className={`w-2 h-2 rounded-full ${
-                          sandboxRunning && sandboxStep === 2 ? 'bg-amber-600 animate-pulse shadow-[0_0_8px_rgba(217,119,6,0.5)]' : (sandboxResult ? 'bg-rose-600 shadow-[0_0_12px_rgba(244,63,94,0.6)]' : 'bg-rose-600 shadow-[0_0_12px_rgba(244,63,94,0.6)]')
-                        }`}></span>
-                        {sandboxRunning && sandboxStep === 2 ? 'Processing' : (sandboxResult ? 'Flagged' : 'Active')}
-                      </span>
-                    </div>
-                    <span className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${sandboxStep === 2 ? 'bg-rose-600 shadow-[0_0_15px_rgba(244,63,94,0.8)] animate-pulse scale-150' : 'bg-rose-200'}`}></span>
-                  </div>
-                  <div className="flex items-center gap-4 text-slate-950 font-black text-sm mb-4 group-hover:text-rose-900 transition-colors relative z-10">
-                    <div className={`w-12 h-12 rounded-md flex items-center justify-center border transition-all shadow-md group-hover:shadow-lg ${
-                      sandboxStep === 2 ? 'bg-rose-600 border-rose-700 text-white' : 'bg-white border-rose-200 text-rose-600'
-                    }`}>
-                      <FileText className={`w-6 h-6 transition-colors`} />
-                    </div>
-                    <span className="text-lg tracking-tight font-black">Audit & Gap Inspector</span>
-                  </div>
-                  <p className="text-[13px] text-slate-800 leading-relaxed font-bold relative z-10">Identifies missing Facebook pixel, slow speed & conversion leaks.</p>
-                </button>
-
-                {/* Chamber 3: Video Pitch Studio */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    playHoverTick();
-                    if (!sandboxResult) {
-                      runSandboxSimulation();
-                    } else {
-                      playSuccessChime();
-                    }
-                  }}
-                  className={`p-6 rounded-md border text-left transition-all duration-500 cursor-pointer group relative overflow-hidden ${
-                    sandboxStep === 3
-                      ? 'bg-indigo-100 border-indigo-600 shadow-[0_25px_50px_-12px_rgba(79,70,229,0.25)] ring-2 ring-indigo-600/50 scale-[1.03] z-20'
-                      : 'bg-indigo-50/40 hover:bg-indigo-100/60 border-indigo-200 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1)] hover:scale-[1.02] z-10'
-                  }`}
-                >
-                  {/* Wire Mesh Backdrop */}
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15] text-indigo-900">
-                    <rect width="100%" height="100%" fill="url(#gen-wire-mesh)" />
-                  </svg>
-
-                  <div className="flex items-center justify-between mb-6 relative z-10">
-                    <div className="flex flex-col gap-2.5">
-                      <span className={`text-[11px] font-black font-mono uppercase tracking-[0.3em] px-3 py-1 rounded-lg border transition-colors w-fit ${
-                        sandboxStep === 3
-                          ? 'text-white bg-indigo-600 border-indigo-700 shadow-lg shadow-indigo-500/30'
-                          : 'text-indigo-700 bg-indigo-100 border-indigo-200'
-                      }`}>
-                        CHAMBER 03
-                      </span>
-                      <span className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2.5 ${
-                        sandboxRunning && sandboxStep === 3 ? 'text-amber-800' : 'text-indigo-950'
-                      }`}>
-                        <span className={`w-2 h-2 rounded-full ${sandboxRunning && sandboxStep === 3 ? 'bg-amber-600 animate-pulse shadow-[0_0_8px_rgba(217,119,6,0.5)]' : 'bg-indigo-600 shadow-[0_0_12px_rgba(79,70,229,0.6)]'}`}></span>
-                        {sandboxRunning && sandboxStep === 3 ? 'Processing' : 'Active'}
-                      </span>
-                    </div>
-                    <span className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${sandboxStep === 3 ? 'bg-indigo-600 shadow-[0_0_15px_rgba(79,70,229,0.8)] animate-pulse scale-150' : 'bg-indigo-200'}`}></span>
-                  </div>
-                  <div className="flex items-center gap-4 text-slate-950 font-black text-sm mb-4 group-hover:text-indigo-900 transition-colors relative z-10">
-                    <div className={`w-12 h-12 rounded-md flex items-center justify-center border transition-all shadow-md group-hover:shadow-lg ${
-                      sandboxStep === 3 ? 'bg-indigo-600 border-indigo-700 text-white' : 'bg-white border-indigo-200 text-indigo-600'
-                    }`}>
-                      <Sparkles className={`w-6 h-6 transition-colors`} />
-                    </div>
-                    <span className="text-lg tracking-tight font-black">AI Video Pitch Studio</span>
-                  </div>
-                  <p className="text-[13px] text-slate-800 leading-relaxed font-bold relative z-10">Synthesizes personalized 60s video audit & voice script.</p>
-                </button>
-
-                {/* Chamber 4: Multi-Channel Dispatch */}
-                <button
-                  type="button"
-                  onClick={() => {
-                    playHoverTick();
-                    if (!sandboxResult) {
-                      runSandboxSimulation();
-                    } else {
-                      triggerConfetti();
-                      playSuccessChime();
-                    }
-                  }}
-                  className={`p-6 rounded-md border text-left transition-all duration-500 cursor-pointer group relative overflow-hidden ${
-                    sandboxStep === 4
-                      ? 'bg-emerald-100 border-emerald-600 shadow-[0_25px_50px_-12px_rgba(16,185,129,0.25)] ring-2 ring-emerald-600/50 scale-[1.03] z-20'
-                      : 'bg-emerald-50/40 hover:bg-emerald-100/60 border-emerald-200 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1)] hover:scale-[1.02] z-10'
-                  }`}
-                >
-                  {/* Wire Mesh Backdrop */}
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.15] text-emerald-900">
-                    <rect width="100%" height="100%" fill="url(#gen-wire-mesh)" />
-                  </svg>
-
-                  <div className="flex items-center justify-between mb-6 relative z-10">
-                    <div className="flex flex-col gap-2.5">
-                      <span className={`text-[11px] font-black font-mono uppercase tracking-[0.3em] px-3 py-1 rounded-lg border transition-colors w-fit ${
-                        sandboxStep === 4
-                          ? 'text-white bg-emerald-600 border-emerald-700 shadow-lg shadow-emerald-500/30'
-                          : 'text-emerald-700 bg-emerald-100 border-emerald-200'
-                      }`}>
-                        CHAMBER 04
-                      </span>
-                      <span className={`text-[10px] font-black uppercase tracking-widest flex items-center gap-2.5 ${
-                        sandboxRunning && sandboxStep === 4 ? 'text-amber-800' : 'text-emerald-950'
-                      }`}>
-                        <span className={`w-2 h-2 rounded-full ${sandboxRunning && sandboxStep === 4 ? 'bg-amber-600 animate-pulse shadow-[0_0_8px_rgba(217,119,6,0.5)]' : 'bg-emerald-600 shadow-[0_0_12px_rgba(16,185,129,0.6)]'}`}></span>
-                        {sandboxRunning && sandboxStep === 4 ? 'Processing' : 'Active'}
-                      </span>
-                    </div>
-                    <span className={`w-2.5 h-2.5 rounded-full transition-all duration-500 ${sandboxStep === 4 ? 'bg-emerald-600 shadow-[0_0_15px_rgba(16,185,129,0.8)] animate-pulse scale-150' : 'bg-emerald-200'}`}></span>
-                  </div>
-                  <div className="flex items-center gap-4 text-slate-950 font-black text-sm mb-4 group-hover:text-emerald-900 transition-colors relative z-10">
-                    <div className={`w-12 h-12 rounded-md flex items-center justify-center border transition-all shadow-md group-hover:shadow-lg ${
-                      sandboxStep === 4 ? 'bg-emerald-600 border-emerald-700 text-white' : 'bg-white border-emerald-200 text-emerald-600'
-                    }`}>
-                      <Mail className={`w-6 h-6 transition-colors`} />
-                    </div>
-                    <span className="text-lg tracking-tight font-black">Revenue Dispatcher</span>
-                  </div>
-                  <p className="text-[13px] text-slate-800 leading-relaxed font-bold relative z-10">Queues Email + WhatsApp voice pitch + LinkedIn DM.</p>
-                </button>
-
-              </div>
-
-              {/* TELEMETRY BAR: Status Display */}
-              <div className="mt-12 bg-white border border-slate-300 rounded-lg p-8 flex flex-wrap items-center justify-between gap-8 text-xs shadow-[0_10px_25px_rgba(0,0,0,0.02)] relative z-10 ring-1 ring-slate-100">
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-md bg-blue-600 flex items-center justify-center shrink-0 shadow-[0_15px_30px_rgba(37,99,235,0.3)] text-white font-black text-xl italic border border-blue-400/40 transform -rotate-3">
-                    PM
-                  </div>
-                  <div>
-                    <div className="font-black text-slate-950 text-base sm:text-xl flex items-center gap-4">
-                      <span>ProfitMint Revenue Agent #8804</span>
-                      <div className="h-5 w-px bg-slate-200"></div>
-                      <span className="text-[11px] text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100 font-mono font-black tracking-widest uppercase shadow-sm">
-                        Status: <span className={sandboxRunning ? 'animate-pulse' : ''}>{sandboxRunning ? 'MINTING... 🔄' : 'Standby 🔵'}</span>
-                      </span>
-                    </div>
-                    <div className="text-[12px] text-slate-600 font-mono mt-2 font-bold flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-                      Next Action: <span className="text-slate-900 uppercase tracking-tight">{sandboxRunning ? `Executing Pipeline Step ${sandboxStep}/4: Lead Scan & Video Script` : 'Click any Chamber above or press Mint Revenue Lead below'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4">
-                  <div className="hidden sm:flex flex-col items-end gap-1 font-mono text-[10px] text-slate-400 uppercase font-black tracking-widest mr-4">
-                    <span>Power Usage: 420W</span>
-                    <span>AI Intensity: 98.4%</span>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={runSandboxSimulation}
-                    disabled={sandboxRunning}
-                    className="px-8 py-3.5 rounded-md bg-blue-600 hover:bg-blue-700 text-white font-black text-[11px] font-mono tracking-[0.25em] uppercase border border-blue-500 shadow-[0_15px_30px_rgba(37,99,235,0.25)] transition-all cursor-pointer disabled:opacity-50 active:scale-95 flex items-center gap-3"
-                  >
-                    {sandboxRunning ? (
-                      <RefreshCw className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Zap className="w-4 h-4 fill-current" />
-                    )}
-                    {sandboxRunning ? 'EXECUTING...' : '⚡ TRIGGER PIPELINE'}
-                  </button>
-                </div>
-              </div>
-
-            </div>
-
-            {/* SYSTEM INPUTS */}
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-end bg-slate-50/80 p-8 rounded-xl border border-slate-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] ring-1 ring-white/50">
-              <div className="sm:col-span-4 space-y-3 relative z-10">
-                <div className="flex items-center justify-between px-1">
-                  <label className="text-[11px] font-black text-slate-600 uppercase tracking-[0.3em] font-mono">Target Industry</label>
-                  <button 
-                    type="button"
-                    onClick={() => setShowCustomEditor(!showCustomEditor)}
-                    className="text-[10px] text-blue-600 hover:text-blue-500 font-black uppercase tracking-widest flex items-center gap-1.5 cursor-pointer font-mono group"
-                  >
-                    <Settings className="w-3.5 h-3.5 group-hover:rotate-90 transition-transform" />
-                    <span>{showCustomEditor ? 'Hide' : 'Setup'}</span>
-                  </button>
-                </div>
-                <div className="relative group">
-                  <select 
-                    value={sandboxIndustry} 
-                    onChange={(e) => setSandboxIndustry(e.target.value)}
-                    disabled={sandboxRunning}
-                    className="w-full bg-white border border-slate-300 text-slate-950 rounded-lg px-5 py-4 text-[13px] font-black focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10 appearance-none cursor-pointer shadow-sm transition-all hover:border-slate-400"
-                  >
-                    <option value="Dental Clinic">Dental Clinic</option>
-                    <option value="Personal Injury Law">Personal Injury Law</option>
-                    <option value="Roofing & Solar Contractor">Roofing & Solar Contractor</option>
-                    <option value="E-Commerce Brand">E-Commerce Brand</option>
-                    <option value="HVAC & Plumbing">HVAC & Plumbing</option>
-                    <option value="MedSpa & Aesthetics">MedSpa & Aesthetics</option>
-                    <option value="Custom...">Custom Niche...</option>
-                  </select>
-                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none group-hover:text-slate-600 transition-colors" />
-                </div>
-              </div>
-
-              <div className="sm:col-span-4 space-y-3 relative z-10">
-                <label className="text-[11px] font-black text-slate-600 uppercase tracking-[0.3em] font-mono px-1">Target Location</label>
-                <div className="relative">
-                  <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
-                  <input 
-                    type="text" 
-                    value={sandboxLocation} 
-                    onChange={(e) => setSandboxLocation(e.target.value)}
-                    disabled={sandboxRunning}
-                    className="w-full bg-white border border-slate-300 text-slate-950 rounded-lg pl-12 pr-5 py-4 text-[13px] font-black focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10 placeholder:text-slate-300 shadow-sm transition-all hover:border-slate-400"
-                    placeholder="e.g. Austin, TX"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-4 relative z-10">
-                <button 
-                  onClick={runSandboxSimulation}
-                  disabled={sandboxRunning}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black text-sm py-4 px-8 rounded-lg shadow-[0_15px_35px_rgba(37,99,235,0.3)] transition-all flex items-center justify-center gap-4 cursor-pointer disabled:opacity-50 h-[58px] uppercase tracking-[0.15em] font-black group active:scale-[0.98]"
-                >
-                  {sandboxRunning ? (
-                    <>
-                      <RefreshCw className="w-5 h-5 animate-spin text-white" />
-                      <span>PROCESSING...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="w-5 h-5 fill-current text-white group-hover:scale-110 group-hover:rotate-12 transition-transform" />
-                      <span>MINT REVENUE LEAD</span>
-                    </>
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Custom Information Editor (If custom industry selected or button clicked) */}
-            {(showCustomEditor || sandboxIndustry === 'Custom...') && (
-              <div className="bg-white border border-blue-200 p-4 rounded-2xl space-y-3 font-mono text-xs animate-in fade-in slide-in-from-top-1 duration-200 relative overflow-hidden shadow-sm">
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.05]">
-                  <rect width="100%" height="100%" fill="url(#gen-wire-mesh)" />
-                </svg>
-
-                <div className="flex items-center justify-between text-blue-600 font-bold border-b border-blue-50 pb-2 relative z-10">
-                  <span className="flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-blue-600" /> CUSTOM PITCH &amp; OFFER CONFIGURATION
-                  </span>
-                  <span className="text-[10px] text-slate-400 font-sans">Live simulation will generate pitch for these parameters</span>
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 relative z-10">
-                  {sandboxIndustry === 'Custom...' && (
-                    <div className="space-y-1">
-                      <label className="text-[10px] font-bold text-slate-500 uppercase">Custom Industry Name</label>
-                      <input 
-                        type="text" 
-                        value={customIndustryInput} 
-                        onChange={(e) => setCustomIndustryInput(e.target.value)}
-                        placeholder="e.g. Chiropractor" 
-                        className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-lg px-2.5 py-1.5 text-xs font-sans focus:border-blue-400 focus:outline-none"
-                      />
-                    </div>
-                  )}
-
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">Business Name Override</label>
-                    <input 
-                      type="text" 
-                      value={customBusinessName} 
-                      onChange={(e) => setCustomBusinessName(e.target.value)}
-                      placeholder="e.g. Zenith Health Clinic" 
-                      className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-lg px-2.5 py-1.5 text-xs font-sans focus:border-blue-400 focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">Target Retainer ($/mo)</label>
-                    <input 
-                      type="number" 
-                      value={customTargetRetainer} 
-                      onChange={(e) => setCustomTargetRetainer(e.target.value)}
-                      placeholder="2800" 
-                      className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-lg px-2.5 py-1.5 text-xs font-sans focus:border-blue-400 focus:outline-none"
-                    />
-                  </div>
-
-                  <div className="space-y-1 sm:col-span-3 pt-1 border-t border-slate-100">
-                    <label className="text-[10px] font-bold text-slate-500 uppercase">Top Banner Launch Edition Text</label>
-                    <input 
-                      type="text" 
-                      value={launchEditionText} 
-                      onChange={(e) => setLaunchEditionText(e.target.value)}
-                      placeholder="e.g. August 2026 Launch Edition" 
-                      className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-lg px-2.5 py-1.5 text-xs font-sans focus:border-blue-400 focus:outline-none"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Live Progress Logs during simulation */}
-            {sandboxRunning && (
-              <div className="bg-white p-5 rounded-2xl border border-blue-200 space-y-3 font-mono text-xs shadow-xl animate-in fade-in duration-200 relative overflow-hidden">
-                <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.05]">
-                  <rect width="100%" height="100%" fill="url(#gen-wire-mesh)" />
-                </svg>
-
-                <div className="flex items-center justify-between text-blue-600 font-bold border-b border-blue-50 pb-2 relative z-10">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping"></span>
-                    Autonomous AI Agent Pipeline Active
-                  </span>
-                  <span className="bg-blue-50 px-2.5 py-0.5 rounded border border-blue-100 text-blue-700 font-bold">
-                    Step {sandboxStep} of 4
-                  </span>
-                </div>
-                <div className="space-y-2 text-slate-600 relative z-10">
-                  {sandboxStep >= 1 && (
-                    <div className="text-blue-700 flex items-center gap-2 bg-blue-50/50 p-2.5 rounded-lg border border-blue-100">
-                      <Check className="w-4 h-4 text-blue-600 shrink-0" />
-                      <span>[Scraper Node] Found high-intent decision maker for {sandboxIndustry} in {sandboxLocation}</span>
-                    </div>
-                  )}
-                  {sandboxStep >= 2 && (
-                    <div className="text-blue-700 flex items-center gap-2 bg-blue-50/50 p-2.5 rounded-lg border border-blue-100">
-                      <Check className="w-4 h-4 text-blue-600 shrink-0" />
-                      <span>[Auditor Node] Scanned website lighthouse &amp; detected missing conversion pixels</span>
-                    </div>
-                  )}
-                  {sandboxStep >= 3 && (
-                    <div className="text-blue-700 flex items-center gap-2 bg-blue-50/50 p-2.5 rounded-lg border border-blue-100">
-                      <Check className="w-4 h-4 text-blue-600 shrink-0" />
-                      <span>[Video Engine] Synthesized 60s AI video audit proposal script + voiceover</span>
-                    </div>
-                  )}
-                  {sandboxStep >= 4 && (
-                    <div className="text-blue-700 flex items-center gap-2 bg-blue-50/50 p-2.5 rounded-lg border border-blue-100">
-                      <Check className="w-4 h-4 text-blue-600 shrink-0" />
-                      <span>[Multi-Channel] Queued Email, WhatsApp &amp; LinkedIn auto-pitch sequence</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Results Display */}
-            {sandboxResult && !sandboxRunning && (
-              <div className="bg-white p-8 rounded-xl border border-slate-200 space-y-8 shadow-2xl animate-in fade-in zoom-in-95 duration-500 relative overflow-hidden">
-                
-                {/* Result Header */}
-                <div className="flex flex-wrap items-center justify-between gap-6 border-b border-slate-100 pb-8 relative z-10">
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600 bg-blue-50 border border-blue-100 px-3 py-1.5 rounded-lg font-mono inline-block mb-4">
-                      HIGH-INTENT SCRAPED PROSPECT
-                    </span>
-                    <h3 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tighter flex flex-wrap items-baseline gap-3">
-                      <span>{sandboxResult.businessName}</span>
-                      <span className="text-sm font-mono text-slate-400 font-medium">({sandboxLocation})</span>
-                    </h3>
-                  </div>
-                  <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 text-right shadow-inner">
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Website Audit Score</div>
-                    <div className="text-2xl font-black text-rose-600 font-mono flex items-center justify-end gap-2">
-                      <span>{sandboxResult.auditScore.split(' ')[0]}</span>
-                      <span className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter italic">(High Growth Opportunity)</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Details Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-                  
-                  {/* Decision Maker & Contact Info */}
-                  <div className="bg-slate-50/50 p-6 rounded-2xl border border-slate-100 space-y-4 shadow-sm group hover:border-slate-200 transition-colors">
-                    <div className="font-black text-slate-400 uppercase tracking-widest text-[9px] font-mono flex items-center justify-between">
-                      <span>DECISION MAKER DATA</span>
-                      <span className="text-emerald-600 flex items-center gap-1">Verified Lead <Check className="w-3 h-3" /></span>
-                    </div>
-                    <div className="text-slate-900 font-black text-lg">{sandboxResult.decisionMaker}</div>
-                    <div className="space-y-2">
-                      <div className="text-slate-600 font-mono text-xs flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-lg bg-white flex items-center justify-center border border-slate-100">
-                          <Mail className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span>{sandboxResult.email}</span>
-                      </div>
-                      <div className="text-slate-600 font-mono text-xs flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-lg bg-white flex items-center justify-center border border-slate-100">
-                          <Phone className="w-3 h-3 text-blue-600" />
-                        </div>
-                        <span>{sandboxResult.phone}</span>
-                      </div>
-                    </div>
-                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest font-mono">Suggested Retainer</span>
-                      <span className="text-blue-700 font-black text-sm bg-blue-50 px-3 py-1 rounded-lg border border-blue-100">{sandboxResult.proposedDeal}</span>
-                    </div>
-                  </div>
-
-                  {/* Identified Website Conversion Gaps */}
-                  <div className="bg-slate-50/50 p-6 rounded-2xl border border-slate-100 space-y-4 shadow-sm group hover:border-slate-200 transition-colors">
-                    <div className="font-black text-slate-400 uppercase tracking-widest text-[9px] font-mono">DETECTED CONVERSION GAPS</div>
-                    <div className="grid grid-cols-1 gap-2">
-                      {sandboxResult.techGaps.map((gap: string, i: number) => (
-                        <div key={i} className="flex items-center gap-3 text-xs font-bold text-slate-700 bg-white p-3 rounded-xl border border-slate-100 group-hover:border-slate-200 transition-all">
-                          <div className="w-5 h-5 rounded-full bg-rose-50 flex items-center justify-center border border-rose-100">
-                            <X className="w-3 h-3 text-rose-500 stroke-[3]" />
-                          </div>
-                          <span>{gap}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* AI Video Proposal Preview Card */}
-                <div className="bg-slate-50 p-6 sm:p-8 rounded-xl border border-slate-100 space-y-6 shadow-inner relative z-10 group/video">
-                  <div className="flex flex-wrap items-center justify-between gap-4">
-                    <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] flex items-center gap-2 font-mono">
-                      <Sparkles className="w-4 h-4" /> AI VIDEO PROPOSAL PITCH SCRIPT
-                    </span>
-                    <button 
-                      onClick={() => { playClickPop(); setSandboxPlaying(!sandboxPlaying); }}
-                      className={`inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl border cursor-pointer transition-all ${
-                        sandboxPlaying 
-                          ? 'bg-blue-600 border-blue-400 text-white shadow-lg shadow-blue-500/20' 
-                          : 'bg-white hover:bg-slate-50 text-slate-500 border-slate-200 shadow-sm'
-                      }`}
-                    >
-                      {sandboxPlaying ? (
-                        <>
-                          <VolumeX className="w-3.5 h-3.5" />
-                          <span>Mute</span>
-                          <span className="flex gap-0.5 h-3 items-end">
-                            <span className="w-0.5 bg-white animate-pulse h-full"></span>
-                            <span className="w-0.5 bg-white animate-pulse h-2"></span>
-                            <span className="w-0.5 bg-white animate-pulse h-3"></span>
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <Volume2 className="w-3.5 h-3.5 text-blue-600" />
-                          <span>Play Audio Pitch Preview</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-
-                  <div className="bg-white border border-slate-200 rounded-2xl p-6 text-sm sm:text-base text-slate-700 font-medium italic leading-relaxed relative overflow-hidden shadow-sm">
-                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
-                    "{sandboxResult.videoScript}"
-                  </div>
-
-                  <div className="flex flex-wrap items-center justify-between gap-6 pt-2">
-                    <div className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] font-mono flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.3)]"></span>
-                      <span>Multi-channel delivery: Email + WhatsApp Voice + LinkedIn DM</span>
-                    </div>
-
-                    <button 
-                      onClick={() => handleCtaClick('wizard')}
-                      className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-black text-xs shadow-xl shadow-blue-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] uppercase tracking-[0.2em] font-mono border border-blue-400/30 flex items-center justify-center gap-3"
-                    >
-                      <span>Deploy Autonomous AI Agent ($47)</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-          </div>
-        </div>
 
       </section>
       
@@ -1533,8 +922,8 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                       </div>
                     </div>
                     <div className="flex items-center -space-x-2 shrink-0">
-                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=80&h=80" alt="Lead" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
-                      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=80&h=80" alt="Lead" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                      <img src="/sarah.jpg" alt="Lead" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
+                      <img src="/marcus.jpg" alt="Lead" className="w-6 h-6 rounded-full border-2 border-white object-cover" />
                       <div className="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[8px] font-black border-2 border-white shadow-2xs">$$</div>
                     </div>
                   </div>
@@ -1587,9 +976,9 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                   {/* Contact Call Bar */}
                   <div className="w-full bg-white rounded-xl p-2 border border-slate-200 shadow-md flex items-center justify-between text-left text-[10px]">
                     <div className="flex items-center gap-2">
-                      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=80&h=80" alt="Sarah" className="w-6 h-6 rounded-full border border-slate-200 object-cover" />
+                      <img src="/sarah.jpg" alt="Elena" className="w-6 h-6 rounded-full border border-slate-200 object-cover" />
                       <div>
-                        <div className="font-extrabold text-slate-900 text-[10px] flex items-center gap-1">Sarah Jenkins <span className="text-blue-600">✓</span></div>
+                        <div className="font-extrabold text-slate-900 text-[10px] flex items-center gap-1">Elena Rodriguez <span className="text-blue-600">✓</span></div>
                         <div className="text-[8px] text-emerald-600 font-bold">Completed call 03:01 AM</div>
                       </div>
                     </div>
@@ -1674,7 +1063,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-1">
                     <div className="flex items-center justify-between text-[10px]">
                       <div className="flex items-center gap-1.5 font-extrabold text-slate-900">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=80&h=80" alt="Jessica" className="w-5 h-5 rounded-full object-cover" />
+                        <img src="/jessica.jpg" alt="Jessica" className="w-5 h-5 rounded-full object-cover" />
                         Jessica Miller <span className="text-blue-600">✓</span>
                       </div>
                       <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
@@ -1800,7 +1189,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                           <div className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[9px] font-black">SJ</div>
                             <div>
-                              <div className="font-extrabold text-slate-900 text-[10px]">Sarah Jenkins <span className="text-blue-600">✓</span></div>
+                              <div className="font-extrabold text-slate-900 text-[10px]">Elena Rodriguez <span className="text-blue-600">✓</span></div>
                               <div className="text-[8px] text-emerald-600 font-bold">Completed call 03:01 AM</div>
                             </div>
                           </div>
@@ -1820,7 +1209,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                           </div>
                           <div className="space-y-1">
                             <div className="text-[9px] text-slate-600 flex items-center justify-between">
-                              <span className="font-bold text-slate-800">Sarah Jenkins</span>
+                              <span className="font-bold text-slate-800">Elena Rodriguez</span>
                               <span className="text-[8px] text-slate-400">Today</span>
                             </div>
                             <div className="text-[8px] text-slate-500 line-clamp-1 bg-slate-50 p-1 rounded">
