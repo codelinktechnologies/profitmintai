@@ -41,6 +41,7 @@ export default function OnboardingWizard({ onComplete, onBackToLogin }: Onboardi
   const [selectedProcessor, setSelectedProcessor] = useState<string>('');
   const [isConnectingProcessor, setIsConnectingProcessor] = useState(false);
   const [connectedProcessors, setConnectedProcessors] = useState<string[]>([]);
+  const [processorKeyInput, setProcessorKeyInput] = useState<{ procId: string, key: string } | null>(null);
 
   // Step 4: AI Search Presence
   const [seoQueries, setSeoQueries] = useState<string[]>([
@@ -118,6 +119,13 @@ export default function OnboardingWizard({ onComplete, onBackToLogin }: Onboardi
   const handleConnectProcessor = (proc: string) => {
     if (connectedProcessors.includes(proc)) return;
     playClickPop();
+    setProcessorKeyInput({ procId: proc, key: '' });
+  };
+
+  const submitProcessorKey = (proc: string) => {
+    if (!processorKeyInput || !processorKeyInput.key.trim()) return;
+    playClickPop();
+    setProcessorKeyInput(null);
     setSelectedProcessor(proc);
     setIsConnectingProcessor(true);
     
@@ -667,14 +675,19 @@ export default function OnboardingWizard({ onComplete, onBackToLogin }: Onboardi
                     const isConnected = connectedProcessors.includes(proc.id);
                     const isConnecting = isConnectingProcessor && selectedProcessor === proc.id;
                     return (
-                      <button
+                      <div
                         key={proc.id}
-                        onClick={() => handleConnectProcessor(proc.id)}
-                        disabled={isConnectingProcessor}
-                        className={`p-5 rounded-2xl border text-left flex flex-col justify-between transition-all relative group cursor-pointer ${
+                        onClick={() => {
+                          if (!isConnected && processorKeyInput?.procId !== proc.id && !isConnectingProcessor) {
+                            handleConnectProcessor(proc.id);
+                          }
+                        }}
+                        className={`p-5 rounded-2xl border text-left flex flex-col justify-between transition-all relative ${
                           isConnected 
                             ? 'bg-blue-950/20 border-blue-500/40 text-white' 
-                            : 'bg-slate-900 border-slate-850 hover:border-slate-750 text-slate-400'
+                            : processorKeyInput?.procId === proc.id
+                            ? 'bg-slate-800 border-[#2563EB]/50'
+                            : 'bg-slate-900 border-slate-850 hover:border-slate-750 text-slate-400 cursor-pointer group'
                         }`}
                       >
                         <div className="flex items-center justify-between w-full mb-4">
@@ -687,7 +700,27 @@ export default function OnboardingWizard({ onComplete, onBackToLogin }: Onboardi
                         </div>
                         <div>
                           <p className="text-xs font-bold text-slate-200 leading-tight">{proc.name}</p>
-                          {isConnecting ? (
+                          
+                          {processorKeyInput?.procId === proc.id ? (
+                            <div className="mt-3 space-y-2">
+                              <input 
+                                type="password" 
+                                autoFocus
+                                placeholder="Enter API Key" 
+                                value={processorKeyInput.key}
+                                onChange={(e) => setProcessorKeyInput({ ...processorKeyInput, key: e.target.value })}
+                                onKeyDown={(e) => e.key === 'Enter' && submitProcessorKey(proc.id)}
+                                className="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-[#2563EB]"
+                                onClick={(e) => e.stopPropagation()}
+                              />
+                              <button 
+                                onClick={(e) => { e.stopPropagation(); submitProcessorKey(proc.id); }}
+                                className="w-full bg-[#2563EB] hover:bg-blue-600 text-white font-bold text-[10px] py-1.5 rounded-lg transition-colors"
+                              >
+                                Connect
+                              </button>
+                            </div>
+                          ) : isConnecting ? (
                             <span className="text-[10px] text-[#2563EB] font-mono uppercase tracking-wider mt-1 block">Connecting API...</span>
                           ) : isConnected ? (
                             <span className="text-[10px] text-blue-400 font-mono uppercase tracking-wider mt-1 block">ACTIVE INGESTION</span>
@@ -695,7 +728,7 @@ export default function OnboardingWizard({ onComplete, onBackToLogin }: Onboardi
                             <span className="text-[10px] text-slate-500 font-mono uppercase tracking-wider mt-1 block">DISCONNECTED</span>
                           )}
                         </div>
-                      </button>
+                      </div>
                     );
                   })}
                 </div>
