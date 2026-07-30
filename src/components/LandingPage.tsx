@@ -247,42 +247,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
   const [tickerSpeed, setTickerSpeed] = useState<'slow' | 'normal' | 'fast'>('normal');
   const [liveEventCount, setLiveEventCount] = useState(2480);
 
-  // Rerun in Autopilot Playground Action
-  const handleRerunInPlayground = (item?: any) => {
-    playSuccessChime();
-    triggerConfetti();
 
-    if (item) {
-      const text = (item.text || '').toLowerCase();
-      if (text.includes('dental') || text.includes('orthodontics')) {
-        setSandboxIndustry('Dental Clinic');
-      } else if (text.includes('law') || text.includes('legal') || text.includes('injury')) {
-        setSandboxIndustry('Personal Injury Law');
-      } else if (text.includes('medspa') || text.includes('aesthetics')) {
-        setSandboxIndustry('MedSpa & Aesthetics');
-      } else if (text.includes('roofing') || text.includes('solar')) {
-        setSandboxIndustry('Roofing & Solar Contractor');
-      } else if (text.includes('e-commerce') || text.includes('ecommerce')) {
-        setSandboxIndustry('E-Commerce Brand');
-      }
-
-      if (item.metrics && Array.isArray(item.metrics)) {
-        const clientMetric = item.metrics.find((m: any) => m.label && m.label.toLowerCase().includes('client'));
-        if (clientMetric && clientMetric.value) {
-          setCustomBusinessName(clientMetric.value);
-        }
-      }
-    }
-
-    const elem = document.getElementById('sandbox-demo');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    setTimeout(() => {
-      runSandboxSimulation();
-    }, 400);
-  };
 
   // Live Stream Event Simulator with variable speed & pause support
   React.useEffect(() => {
@@ -451,7 +416,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans relative overflow-x-hidden selection:bg-blue-500/20 selection:text-slate-900">
+    <div className="min-h-screen bg-white text-slate-900 font-sans relative overflow-x-hidden selection:bg-blue-500/20 selection:text-slate-900" style={{ zoom: 0.7 }}>
       
       {/* GLOBAL SVG DEFS */}
       <svg className="hidden">
@@ -628,7 +593,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             <div className="flex items-center shrink-0 gap-2 pl-1">
               {!selectedTicker ? (
                 <span className="text-[10px] text-slate-400 font-mono font-bold bg-[#0d1527] px-3 py-1 rounded-full border border-[#1e293b] shadow-xs flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Click event to inspect &amp; run
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> Click event to inspect
                 </span>
               ) : (
                 <span className="text-[10px] text-emerald-400 font-mono font-bold bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/40 shadow-xs flex items-center gap-1.5">
@@ -760,26 +725,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
 
               </div>
 
-              {/* Full Width Dedicated Action Banner */}
-              <div className="pt-3 border-t border-[#1e293b] flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#070b16] p-4 rounded-xl">
-                <div className="flex items-center gap-2.5 text-left">
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/40 flex items-center justify-center shrink-0">
-                    <Sparkles className="w-4 h-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-white">Test this exact event live in Autopilot Playground</div>
-                    <div className="text-[10px] text-slate-400 font-mono">Runs real-time lead scan, website audit, and video proposal pitch script generation</div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => handleRerunInPlayground(selectedTicker)}
-                  className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-black text-xs shadow-lg shadow-purple-500/30 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98] uppercase tracking-wider font-mono border border-purple-400/40 shrink-0"
-                >
-                  <RefreshCw className="w-4 h-4 text-purple-200 animate-spin-slow" />
-                  <span>RERUN IN AUTOPILOT PLAYGROUND</span>
-                </button>
-              </div>
 
             </div>
           )}
@@ -816,13 +761,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                 className="bg-blue-600 hover:bg-blue-700 text-white font-black text-base px-8 py-4 rounded-xl shadow-md transition-all hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
               >
                 Launch AI Client Acquisition — $47 <ArrowRight className="w-5 h-5" />
-              </button>
-
-              <button 
-                onClick={() => handleCtaClick('demo')}
-                className="bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 font-bold text-base px-6 py-4 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Sparkles className="w-5 h-5 text-blue-600" /> Test Live Sandbox
               </button>
             </div>
 
@@ -877,11 +815,11 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
       {/* BENEFIT GRID (4 Rich Core Benchmark Cards) */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto space-y-8">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <div className="text-center space-y-3 max-w-4xl mx-auto overflow-hidden">
             <span className="text-xs font-bold text-blue-700 uppercase tracking-widest bg-blue-100/80 px-3.5 py-1.5 rounded-full border border-blue-200 inline-block">
               CORE CAPABILITIES
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight pt-1">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tight pt-1 whitespace-nowrap">
               Engineered for Autonomous Client Acquisition
             </h2>
           </div>
@@ -899,10 +837,10 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2">
                   {/* Search Header Bar */}
                   <div className="w-full bg-[#e0f2fe]/80 rounded-xl p-2 border border-sky-200/70 flex items-center justify-between gap-1 text-[10px]">
@@ -947,10 +885,10 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2 relative">
                   {/* Outcome Action Card */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-orange-200 shadow-sm space-y-1.5 text-left relative pt-3">
@@ -1006,10 +944,10 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2">
                   {/* Inbox Card */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-1">
@@ -1020,7 +958,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     <div className="text-[8px] font-bold text-slate-400 pt-0.5">Filter: Channel</div>
                     <div className="space-y-1 pt-0.5">
                       <div className="text-[9px] text-slate-700 flex items-center justify-between">
-                        <span className="font-bold text-slate-900 flex items-center gap-1">Jessica Miller <span className="text-blue-600">✓</span></span>
+                        <span className="font-bold text-slate-900 flex items-center gap-1">Sarah Park <span className="text-blue-600">✓</span></span>
                         <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
                       </div>
                       <div className="text-[8px] text-slate-500 line-clamp-1 bg-slate-50 p-1 rounded border border-slate-100">
@@ -1054,17 +992,17 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+              className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
             >
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[200px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2 relative">
                   {/* Chat Bubble 1 */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-1">
                     <div className="flex items-center justify-between text-[10px]">
                       <div className="flex items-center gap-1.5 font-extrabold text-slate-900">
-                        <img src="/jessica.jpg" alt="Jessica" className="w-5 h-5 rounded-full object-cover" />
-                        Jessica Miller <span className="text-blue-600">✓</span>
+                        <img src="/avatar_1.jpg" alt="Sarah" className="w-5 h-5 rounded-full object-cover shadow-sm" />
+                        Sarah Park <span className="text-blue-600">✓</span>
                       </div>
                       <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
                     </div>
@@ -1125,9 +1063,26 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
             {pillars.map((p, i) => {
               const Icon = p.icon;
+              
+              // Bento layout logic
+              const getBentoClass = (index: number) => {
+                switch(index) {
+                  case 0: return 'md:col-span-4';
+                  case 1: return 'md:col-span-2';
+                  case 2: return 'md:col-span-2';
+                  case 3: return 'md:col-span-2';
+                  case 4: return 'md:col-span-2';
+                  case 5: return 'md:col-span-3';
+                  case 6: return 'md:col-span-3';
+                  case 7: return 'md:col-span-2';
+                  case 8: return 'md:col-span-4';
+                  default: return 'md:col-span-2';
+                }
+              };
+
               return (
                 <motion.div 
                   key={i} 
@@ -1135,31 +1090,31 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white rounded-[28px] border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group"
+                  className={`bg-white rounded-[28px] border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group ${getBentoClass(i)}`}
                 >
                   {/* TOP PREVIEW GRAPHIC BOX (Benchmark Style) */}
-                  <div className="bg-slate-100/80 rounded-2xl p-4 h-[190px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/60 mb-5 select-none">
+                  <div className="bg-slate-200/50 shadow-inner rounded-2xl p-4 h-[190px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/60 mb-5 select-none">
                     {i === 0 && (
-                      <div className="w-full flex flex-col justify-center items-center gap-2">
-                        <div className="w-full bg-blue-100/70 rounded-xl p-2 border border-blue-200/60 flex items-center justify-between gap-1 text-[10px]">
-                          <div className="bg-white px-2.5 py-1 rounded-md text-slate-700 font-bold shadow-2xs flex-1 text-left">
+                      <div className="w-[85%] flex flex-col justify-center items-center gap-4">
+                        <div className="w-full bg-blue-100/70 rounded-2xl p-3 border border-blue-200/60 flex items-center justify-between gap-3 text-xs sm:text-sm">
+                          <div className="bg-white px-4 py-2 rounded-xl text-slate-700 font-bold shadow-sm flex-1 text-left">
                             Keyword: Dental Implants
                           </div>
-                          <div className="bg-white px-2 py-1 rounded-md text-slate-500 font-medium shadow-2xs">Status</div>
-                          <div className="bg-white px-2 py-1 rounded-md text-slate-500 font-medium shadow-2xs">Filter</div>
+                          <div className="bg-white px-4 py-2 rounded-xl text-slate-500 font-medium shadow-sm">Status</div>
+                          <div className="bg-white px-4 py-2 rounded-xl text-slate-500 font-medium shadow-sm">Filter</div>
                         </div>
-                        <div className="w-full bg-white rounded-xl p-3 border border-slate-200 shadow-sm flex items-center justify-between text-left">
+                        <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg flex items-center justify-between text-left">
                           <div>
-                            <div className="text-[11px] font-black text-slate-900">+150 Leads Attributed</div>
-                            <div className="w-24 h-1.5 bg-slate-200 rounded-full mt-1.5 overflow-hidden">
+                            <div className="text-sm sm:text-base font-black text-slate-900">+150 Leads Attributed</div>
+                            <div className="w-32 h-2.5 bg-slate-200 rounded-full mt-2 overflow-hidden shadow-inner">
                               <div className="bg-blue-600 h-full w-[80%]" />
                             </div>
                           </div>
-                          <div className="flex items-center -space-x-2">
-                            <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-[9px] font-bold border-2 border-white">RD</div>
-                            <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px] font-bold border-2 border-white">CL</div>
-                            <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[9px] font-bold border-2 border-white">AC</div>
-                            <div className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center text-[8px] font-black border-2 border-white">100+</div>
+                          <div className="flex items-center -space-x-3">
+                            <img src="/avatar_1.jpg" alt="RD" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-4 border-white shadow-sm z-30" />
+                            <img src="/avatar_2.jpg" alt="CL" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-4 border-white shadow-sm z-20" />
+                            <img src="/avatar_3.jpg" alt="AC" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-4 border-white shadow-sm z-10" />
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] sm:text-xs font-black border-4 border-white shadow-sm z-0">100+</div>
                           </div>
                         </div>
                       </div>
@@ -1187,7 +1142,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                         </div>
                         <div className="w-full bg-white rounded-xl p-2 border border-slate-200 shadow-md flex items-center justify-between text-left text-[10px]">
                           <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center text-[9px] font-black">SJ</div>
+                            <img src="/sarah.jpg" alt="Elena Rodriguez" className="w-6 h-6 rounded-full object-cover border border-slate-200" />
                             <div>
                               <div className="font-extrabold text-slate-900 text-[10px]">Elena Rodriguez <span className="text-blue-600">✓</span></div>
                               <div className="text-[8px] text-emerald-600 font-bold">Completed call 03:01 AM</div>
@@ -1230,8 +1185,8 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                         <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-2">
                           <div className="flex items-center justify-between text-[10px]">
                             <div className="flex items-center gap-1.5 font-extrabold text-slate-900">
-                              <div className="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[9px]">JM</div>
-                              Jessica Miller <span className="text-blue-600">✓</span>
+                              <img src="/avatar_1.jpg" alt="Sarah Park" className="w-6 h-6 rounded-full object-cover border border-slate-200 shadow-sm" />
+                              Sarah Park <span className="text-blue-600">✓</span>
                             </div>
                             <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
                           </div>
@@ -1272,39 +1227,63 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     )}
 
                     {i === 5 && (
-                      <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm space-y-2">
-                        <div className="flex items-center justify-between text-[9px] font-extrabold text-slate-800 border-b border-slate-100 pb-1">
-                          <span>6-Stage Closing Engine</span>
-                          <span className="text-blue-600 bg-blue-50 px-2 py-0.5 rounded font-bold">Stage 5: Proposal</span>
+                      <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg space-y-6">
+                        <div className="flex items-center justify-between text-xs sm:text-sm font-black text-slate-800 border-b border-slate-100 pb-3">
+                          <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-blue-600" /> 6-Stage Closing Engine</span>
+                          <span className="text-blue-700 bg-blue-50 px-3 py-1 rounded-md shadow-sm border border-blue-100 text-[10px] sm:text-xs">Stage 5: Proposal</span>
                         </div>
-                        <div className="grid grid-cols-6 gap-1 text-[8px] text-center font-extrabold">
-                          {['Score', 'Reach', 'Call', 'Book', 'Video', 'Sign'].map((stg, idx) => (
-                            <div key={idx} className={`p-1 rounded ${idx <= 4 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>
-                              {stg}
-                            </div>
-                          ))}
+                        
+                        <div className="relative">
+                          <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 rounded-full" />
+                          <div className="absolute top-1/2 left-0 w-[83%] h-1 bg-blue-500 -translate-y-1/2 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
+                          
+                          <div className="grid grid-cols-6 gap-2 text-[9px] sm:text-[10px] text-center font-extrabold relative z-10">
+                            {[
+                              { name: 'Score', icon: <Target className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Reach', icon: <Mail className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Call', icon: <Phone className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Book', icon: <Calendar className="w-3.5 h-3.5 mx-auto mb-1" /> },
+                              { name: 'Video', icon: <Play className="w-3.5 h-3.5 mx-auto mb-1 fill-current" /> },
+                              { name: 'Sign', icon: <CheckCircle className="w-3.5 h-3.5 mx-auto mb-1" /> }
+                            ].map((stg, idx) => (
+                              <div key={idx} className={`py-2 px-1 rounded-xl transition-all duration-300 ${idx <= 4 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105' : 'bg-white text-slate-400 border-2 border-slate-100 shadow-sm'}`}>
+                                {stg.icon}
+                                <span>{stg.name}</span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div className="bg-slate-50 p-1.5 rounded-lg border border-slate-200 flex items-center justify-between text-[9px]">
-                          <span className="font-extrabold text-slate-800">Coastal Legal Proposal</span>
-                          <span className="text-emerald-600 font-black">$2,400/mo</span>
+
+                        <div className="bg-gradient-to-r from-slate-50 to-white p-4 rounded-xl border border-slate-200 flex items-center justify-between text-xs sm:text-sm shadow-sm">
+                          <span className="font-extrabold text-slate-800 flex items-center gap-2"><FileText className="w-4 h-4 text-slate-400" /> Coastal Legal Proposal</span>
+                          <span className="text-emerald-600 font-black bg-emerald-50 px-2 py-1 rounded-md border border-emerald-100">$2,400/mo</span>
                         </div>
                       </div>
                     )}
 
                     {i === 6 && (
-                      <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm space-y-2 text-left">
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-black text-slate-900">Apex Consulting</span>
-                          <span className="text-[9px] font-extrabold bg-amber-100 text-amber-800 border border-amber-300 px-2 py-0.5 rounded-full">
-                            Health 8/10
+                      <div className="w-full bg-white rounded-2xl p-6 border border-slate-200 shadow-lg space-y-5 text-left">
+                        <div className="flex items-center justify-between pb-2 border-b border-slate-50">
+                          <span className="text-sm font-black text-slate-900 flex items-center gap-2"><Activity className="w-4 h-4 text-emerald-500" /> Apex Consulting</span>
+                          <span className="text-[10px] sm:text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-300 px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" /> Health 8/10
                           </span>
                         </div>
-                        <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
-                          <div className="bg-emerald-500 h-full w-[80%]" />
+                        
+                        <div className="space-y-1.5">
+                          <div className="flex justify-between text-[10px] font-bold text-slate-500">
+                            <span>Client Retention Score</span>
+                            <span className="text-emerald-600">80%</span>
+                          </div>
+                          <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200 shadow-inner relative">
+                            <div className="absolute top-0 left-0 h-full w-[80%] bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full" />
+                          </div>
                         </div>
-                        <div className="bg-blue-50 p-1.5 rounded-lg border border-blue-200 flex items-center justify-between text-[9px]">
-                          <span className="font-bold text-blue-900">Upsell Trigger Detected</span>
-                          <span className="text-blue-600 font-extrabold">+ $800/mo</span>
+
+                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50/50 p-3.5 rounded-xl border border-blue-200/60 flex items-center justify-between text-xs sm:text-sm shadow-sm mt-3 relative overflow-hidden group">
+                          <div className="absolute inset-0 bg-blue-400/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                          <span className="font-bold text-blue-900 flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-blue-600" /> Upsell Trigger Detected</span>
+                          <span className="text-blue-700 font-black bg-white/60 px-2 py-1 rounded-md relative z-10">+ $800/mo</span>
                         </div>
                       </div>
                     )}
@@ -1330,22 +1309,34 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     )}
 
                     {i === 8 && (
-                      <div className="w-full bg-white rounded-xl p-3 border border-slate-200 shadow-sm space-y-2">
-                        <div className="text-[9px] font-extrabold text-slate-500 uppercase tracking-wider text-center">
-                          Plug & Play Ecosystem
+                      <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg space-y-6">
+                        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                          <span className="text-xs sm:text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                            <Zap className="w-4 h-4 text-indigo-500 fill-indigo-500" /> Plug & Play Ecosystem
+                          </span>
+                          <span className="bg-emerald-50 text-emerald-600 px-2.5 py-0.5 rounded-full text-[10px] font-bold border border-emerald-200 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Live Sync
+                          </span>
                         </div>
-                        <div className="grid grid-cols-4 gap-2 pt-1">
+                        
+                        <div className="relative flex justify-between items-center w-[90%] mx-auto">
+                          {/* Continuous connection line */}
+                          <div className="absolute top-[32%] left-0 w-full h-1 bg-slate-100 -translate-y-1/2 rounded-full overflow-hidden">
+                            <div className="h-full bg-indigo-500/30 w-full animate-pulse" />
+                          </div>
+                          
+                          {/* Nodes */}
                           {[
-                            { name: 'Stripe', bg: 'bg-indigo-100 text-indigo-700', icon: 'S' },
-                            { name: 'Calendar', bg: 'bg-blue-100 text-blue-700', icon: 'C' },
-                            { name: 'CRM', bg: 'bg-emerald-100 text-emerald-700', icon: 'M' },
-                            { name: 'WhatsApp', bg: 'bg-green-100 text-green-700', icon: 'W' }
+                            { name: 'Stripe', bg: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: <DollarSign className="w-5 h-5" /> },
+                            { name: 'Calendar', bg: 'bg-blue-100 text-blue-700 border-blue-200', icon: <Calendar className="w-5 h-5" /> },
+                            { name: 'CRM', bg: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: <Settings className="w-5 h-5" /> },
+                            { name: 'WhatsApp', bg: 'bg-green-100 text-green-700 border-green-200', icon: <MessageSquare className="w-5 h-5" /> }
                           ].map((item, idx) => (
-                            <div key={idx} className="flex flex-col items-center gap-1">
-                              <div className={`w-7 h-7 rounded-lg ${item.bg} font-black text-xs flex items-center justify-center border border-slate-200 shadow-2xs`}>
+                            <div key={idx} className="relative z-10 flex flex-col items-center gap-3 group">
+                              <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center border-2 shadow-sm group-hover:scale-110 transition-transform duration-300 group-hover:shadow-md bg-opacity-90 backdrop-blur-sm`}>
                                 {item.icon}
                               </div>
-                              <span className="text-[8px] font-bold text-slate-600">{item.name}</span>
+                              <span className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-2 py-0.5 rounded-md shadow-2xs border border-slate-100">{item.name}</span>
                             </div>
                           ))}
                         </div>
@@ -1389,9 +1380,9 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
           {/* 3 BENCHMARK STEP CARDS */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* STEP 01 */}
-            <div className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
+            <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2 relative">
                   {/* Onboarding Form Mockup */}
                   <div className="w-full bg-white rounded-xl p-3 border border-slate-200 shadow-sm space-y-2 text-left">
@@ -1441,9 +1432,9 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             </div>
 
             {/* STEP 02 */}
-            <div className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
+            <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2 relative">
                   {/* Automated Execution Pipeline */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm space-y-2 text-left">
@@ -1498,9 +1489,9 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             </div>
 
             {/* STEP 03 */}
-            <div className="bg-white rounded-lg border border-slate-200/80 shadow-md shadow-slate-200/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
+            <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-[#f1f5f9]/90 rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
                 <div className="w-full flex flex-col justify-center items-center gap-2 relative">
                   {/* WhatsApp Voice Briefing Card */}
                   <div className="w-full bg-emerald-950 text-white rounded-xl p-3 border border-emerald-800 shadow-md space-y-2 text-left">

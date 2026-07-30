@@ -74,7 +74,7 @@ export default function AgentHeroIllustration() {
           ease: "easeInOut",
           delay: 0.2
         }}
-        className="absolute -top-2 -left-3 bg-slate-900/95 backdrop-blur-md border border-blue-500/50 p-3 rounded-xl shadow-2xl flex items-center gap-3 z-20 transition-transform duration-300 hover:scale-105"
+        className="absolute -top-2 -left-3 bg-slate-900/95 backdrop-blur-md border border-blue-500/50 py-2.5 px-4 rounded-full shadow-2xl flex items-center gap-3 z-20 transition-transform duration-300 hover:scale-105"
       >
         <ProfitMintLogo className="w-8 h-8" />
         <div className="text-left">
@@ -97,9 +97,9 @@ export default function AgentHeroIllustration() {
           ease: "easeInOut",
           delay: 1
         }}
-        className="absolute -bottom-2 -right-3 bg-slate-900/95 backdrop-blur-md border border-amber-500/50 p-3 rounded-xl shadow-2xl flex items-center gap-3 z-20 transition-transform duration-300 hover:scale-105"
+        className="absolute -bottom-2 -right-3 bg-slate-900/95 backdrop-blur-md border border-amber-500/50 py-2.5 px-4 rounded-full shadow-2xl flex items-center gap-3 z-20 transition-transform duration-300 hover:scale-105"
       >
-        <div className="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
+        <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
           <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
         </div>
         <div className="text-left">
@@ -118,7 +118,7 @@ export default function AgentHeroIllustration() {
           repeat: Infinity, 
           ease: "easeInOut" 
         }}
-        className="absolute top-1/2 -right-6 -translate-y-1/2 bg-slate-900/95 backdrop-blur-md border border-sky-500/40 p-2.5 rounded-xl shadow-xl hidden sm:flex items-center gap-2 z-20"
+        className="absolute top-1/2 -right-6 -translate-y-1/2 bg-slate-900/95 backdrop-blur-md border border-sky-500/40 py-2 px-4 rounded-full shadow-xl hidden sm:flex items-center gap-2 z-20"
       >
         <Zap className="w-4 h-4 text-sky-400 fill-sky-400/20" />
         <span className="text-xs font-bold text-sky-200">Instant Outreach</span>
