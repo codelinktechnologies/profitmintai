@@ -58,6 +58,7 @@ interface LandingPageProps {
 
 export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: LandingPageProps) {
   const [muted, setMuted] = useState(getMuteState());
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedTickerKey, setExpandedTickerKey] = useState<string | null>(null);
   const [launchEditionText, setLaunchEditionText] = useState('August 2026 Launch Edition');
@@ -1052,370 +1053,87 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
       {/* DETAILED WORKFLOW (The "How" Section) */}
 
       {/* FEATURES / 7 ENGINES SECTION */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-200 bg-slate-100/80">
-        <div className="max-w-7xl mx-auto space-y-12 text-left">
-          <div className="text-center space-y-3 max-w-2xl mx-auto">
-            <span className="text-xs font-bold text-blue-700 uppercase tracking-widest bg-blue-100/80 px-3.5 py-1.5 rounded-full border border-blue-200 inline-block">
+      <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-white relative overflow-hidden border-y border-slate-200">
+        {/* Radar Background */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+          {/* Mascot behind the wheel */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-40 z-0 scale-125 md:scale-100">
+            <img src="/mascot.jpg" alt="Mascot" className="h-auto max-h-[800px] w-auto object-contain mix-blend-multiply" />
+          </div>
+          
+          <div className="absolute inset-0 flex items-center justify-center opacity-[0.60] z-10">
+            <svg width="1000" height="1000" viewBox="0 0 1000 1000" className="animate-[spin_30s_linear_infinite]">
+            <circle cx="500" cy="500" r="150" fill="none" stroke="#605bff" strokeWidth="1.5" strokeDasharray="4 6" />
+            <circle cx="500" cy="500" r="250" fill="none" stroke="#605bff" strokeWidth="1" />
+            <circle cx="500" cy="500" r="350" fill="none" stroke="#605bff" strokeWidth="1.5" strokeDasharray="4 6" />
+            <circle cx="500" cy="500" r="450" fill="none" stroke="#605bff" strokeWidth="2" strokeDasharray="2 10" />
+            <line x1="500" y1="0" x2="500" y2="1000" stroke="#605bff" strokeWidth="1" />
+            <line x1="0" y1="500" x2="1000" y2="500" stroke="#605bff" strokeWidth="1" />
+            <line x1="146" y1="146" x2="854" y2="854" stroke="#605bff" strokeWidth="1" />
+            <line x1="146" y1="854" x2="854" y2="146" stroke="#605bff" strokeWidth="1" />
+            <circle cx="500" cy="250" r="4" fill="#605bff" />
+            <circle cx="500" cy="750" r="4" fill="#605bff" />
+            <circle cx="250" cy="500" r="4" fill="#605bff" />
+            <circle cx="750" cy="500" r="4" fill="#605bff" />
+          </svg>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <div className="flex justify-center mb-6">
+            <span className="text-[10px] sm:text-xs font-bold text-[#605bff] uppercase tracking-widest bg-blue-50/90 backdrop-blur-sm px-4 py-1.5 rounded-full border border-blue-200/50 shadow-sm flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-[#605bff] rounded-full" />
               7 ENGINES · ONE SYSTEM
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight pt-2">
-              Everything a client-acquisition team does — running while you sleep
-            </h2>
           </div>
+          
+          <h2 className="text-5xl sm:text-7xl font-black tracking-tighter italic mb-4">
+            <span className="text-slate-900">PROFITMINT</span> <span className="text-[#605bff]">ENGINES</span>
+          </h2>
+          
+          <p className="text-sm sm:text-base text-slate-600 font-medium max-w-lg mx-auto mb-16">
+            Everything a client-acquisition team does — running while you sleep. Unlock hands-on AI execution and real-world results faster.
+          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
-            {pillars.map((p, i) => {
+          <div className="flex flex-col gap-4 w-full max-w-3xl mx-auto">
+            {(showAllFeatures ? pillars : pillars.slice(0, 3)).map((p, i) => {
               const Icon = p.icon;
-              
-              // Bento layout logic
-              const getBentoClass = (index: number) => {
-                switch(index) {
-                  case 0: return 'md:col-span-4';
-                  case 1: return 'md:col-span-2';
-                  case 2: return 'md:col-span-2';
-                  case 3: return 'md:col-span-2';
-                  case 4: return 'md:col-span-2';
-                  case 5: return 'md:col-span-3';
-                  case 6: return 'md:col-span-3';
-                  case 7: return 'md:col-span-2';
-                  case 8: return 'md:col-span-4';
-                  default: return 'md:col-span-2';
-                }
-              };
-
               return (
                 <motion.div 
-                  key={i} 
-                  initial={{ opacity: 0, y: 20 }}
+                  key={i}
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`bg-white rounded-[28px] border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group ${getBentoClass(i)}`}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="bg-[#e4fbf4] border border-[#c4eee0] rounded-[24px] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group relative overflow-hidden"
                 >
-                  {/* TOP PREVIEW GRAPHIC BOX (Benchmark Style) */}
-                  <div className="bg-slate-200/50 shadow-inner rounded-2xl py-4 h-[190px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/60 mb-5 select-none">
-                    {i === 0 && (
-                      <div className="w-full h-full flex flex-col gap-3">
-                        <div className="flex items-center justify-between bg-white/80 p-3 rounded-xl border border-white/60 shadow-sm backdrop-blur-sm">
-                          <div className="flex items-center gap-2">
-                             <Search className="w-4 h-4 text-blue-500" />
-                             <span className="text-[11px] sm:text-xs font-bold text-slate-700">Keyword: Dental Implants</span>
-                          </div>
-                          <div className="flex gap-2">
-                            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[9px] sm:text-[10px] font-bold shadow-xs">Active</span>
-                            <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[9px] sm:text-[10px] font-bold shadow-xs flex items-center gap-1">Filter</span>
-                          </div>
-                        </div>
-                        
-                        <div className="flex-1 bg-white rounded-xl border border-slate-200 shadow-lg p-4 flex flex-col justify-between">
-                          <div className="flex items-start justify-between">
-                            <div className="text-left">
-                              <div className="text-[9px] sm:text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Total Attributed Revenue</div>
-                              <div className="text-xl sm:text-2xl font-black text-slate-900 mt-0.5">$42,500</div>
-                            </div>
-                            <div className="bg-emerald-50 text-emerald-600 border border-emerald-100 px-2 py-1 rounded-lg text-[10px] font-bold flex items-center gap-1 shadow-sm">
-                              <TrendingUp className="w-3 h-3" /> +24%
-                            </div>
-                          </div>
-                          
-                          <div className="space-y-3 mt-4 flex-1">
-                            {[
-                              { source: 'AI Search (Perplexity)', amount: '$12,000', leads: 45, color: 'bg-indigo-500' },
-                              { source: 'Automated Outreach', amount: '$18,500', leads: 62, color: 'bg-blue-500' },
-                              { source: 'WhatsApp Conversions', amount: '$12,000', leads: 43, color: 'bg-emerald-500' }
-                            ].map((item, idx) => (
-                              <div key={idx} className="flex items-center justify-between group">
-                                <div className="flex items-center gap-2.5">
-                                  <div className={`w-2 h-2 rounded-full ${item.color} shadow-sm group-hover:scale-150 transition-transform`} />
-                                  <span className="text-[10px] sm:text-[11px] font-bold text-slate-600">{item.source}</span>
-                                </div>
-                                <div className="flex items-center gap-3 sm:gap-4">
-                                  <span className="text-[9px] sm:text-[10px] text-slate-400 font-medium">{item.leads} leads</span>
-                                  <span className="text-[10px] sm:text-[11px] font-black text-slate-800 w-12 text-right">{item.amount}</span>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                          
-                          <div className="mt-2 pt-3 border-t border-slate-100 flex items-center justify-between">
-                            <div className="flex items-center -space-x-2">
-                              <img src="/avatar_1.jpg" alt="RD" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-30" />
-                              <img src="/avatar_2.jpg" alt="CL" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-20" />
-                              <img src="/avatar_3.jpg" alt="AC" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-10" />
-                              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[8px] sm:text-[9px] font-black border-2 border-white shadow-sm z-0">150+</div>
-                            </div>
-                            <div className="text-[9px] sm:text-[10px] text-blue-600 font-bold bg-blue-50 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors">
-                              View Full Report &rarr;
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 1 && (
-                      <div className="w-full flex flex-col justify-center items-center gap-2 relative">
-                        <div className="w-full bg-white rounded-xl p-2.5 border border-amber-200 shadow-sm space-y-2 text-left">
-                          <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-extrabold text-slate-800">Auto Citation Sync</span>
-                            <span className="text-[9px] font-black bg-amber-500 text-white px-2 py-0.5 rounded-full flex items-center gap-1">
-                              <Sparkles className="w-2.5 h-2.5" /> Auto Citation
-                            </span>
-                          </div>
-                          <div className="space-y-1 text-[9px] font-semibold text-slate-600">
-                            <div className="flex items-center justify-between bg-slate-50 p-1 rounded border border-slate-100">
-                              <span>Mark as qualified</span>
-                              <div className="w-5 h-3 bg-emerald-500 rounded-full flex items-center justify-end px-0.5"><div className="w-2 h-2 bg-white rounded-full" /></div>
-                            </div>
-                            <div className="flex items-center justify-between bg-slate-50 p-1 rounded border border-slate-100">
-                              <span>Move to booking step</span>
-                              <div className="w-5 h-3 bg-emerald-500 rounded-full flex items-center justify-end px-0.5"><div className="w-2 h-2 bg-white rounded-full" /></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="w-full bg-white rounded-xl p-2 border border-slate-200 shadow-md flex items-center justify-between text-left text-[10px]">
-                          <div className="flex items-center gap-2">
-                            <img src="/sarah.jpg" alt="Elena Rodriguez" className="w-6 h-6 rounded-full object-cover border border-slate-200" />
-                            <div>
-                              <div className="font-extrabold text-slate-900 text-[10px]">Elena Rodriguez <span className="text-blue-600">✓</span></div>
-                              <div className="text-[8px] text-emerald-600 font-bold">Completed call 03:01 AM</div>
-                            </div>
-                          </div>
-                          <div className="p-1.5 rounded-full bg-emerald-100 text-emerald-700">
-                            <Phone className="w-3 h-3" />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 2 && (
-                      <div className="w-full flex flex-col justify-center items-center gap-2">
-                        <div className="w-full bg-white rounded-xl p-2 border border-slate-200 shadow-sm text-left">
-                          <div className="flex items-center justify-between text-[9px] font-black text-slate-800 border-b border-slate-100 pb-1 mb-1">
-                            <span>Agent Campaign</span>
-                            <span className="text-slate-400 font-normal">Overview Inbox Sequences</span>
-                          </div>
-                          <div className="space-y-1">
-                            <div className="text-[9px] text-slate-600 flex items-center justify-between">
-                              <span className="font-bold text-slate-800">Elena Rodriguez</span>
-                              <span className="text-[8px] text-slate-400">Today</span>
-                            </div>
-                            <div className="text-[8px] text-slate-500 line-clamp-1 bg-slate-50 p-1 rounded">
-                              Reallocated outreach effort to top converting channel...
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-center gap-1.5">
-                          <span className="bg-white border border-slate-200 px-2.5 py-1 rounded-xl text-[9px] font-bold text-slate-700 shadow-2xs flex items-center gap-1"><Phone className="w-2.5 h-2.5 text-blue-600" /> Calls</span>
-                          <span className="bg-white border border-slate-200 px-2.5 py-1 rounded-xl text-[9px] font-bold text-slate-700 shadow-2xs flex items-center gap-1"><MessageSquare className="w-2.5 h-2.5 text-emerald-600" /> Emails</span>
-                          <span className="bg-white border border-slate-200 px-2.5 py-1 rounded-xl text-[9px] font-bold text-slate-700 shadow-2xs flex items-center gap-1"><Zap className="w-2.5 h-2.5 text-amber-500" /> Chats</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 3 && (
-                      <div className="w-full flex flex-col justify-center items-center relative">
-                        <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm text-left space-y-2">
-                          <div className="flex items-center justify-between text-[10px]">
-                            <div className="flex items-center gap-1.5 font-extrabold text-slate-900">
-                              <img src="/avatar_1.jpg" alt="Sarah Park" className="w-6 h-6 rounded-full object-cover border border-slate-200 shadow-sm" />
-                              Sarah Park <span className="text-blue-600">✓</span>
-                            </div>
-                            <span className="text-[8px] text-slate-400 font-mono">03:01 AM</span>
-                          </div>
-                          <div className="bg-slate-50 p-1.5 rounded-lg text-[9px] text-slate-700 font-medium">
-                            Yea, i am purchasing the retainer...
-                          </div>
-                          <div className="flex items-center justify-between text-[9px] font-bold pt-0.5 border-t border-slate-100">
-                            <span className="text-slate-500">Predicted Close Rate</span>
-                            <span className="text-emerald-600">98% High</span>
-                          </div>
-                        </div>
-                        <div className="absolute -top-2 -right-1 bg-emerald-500 text-white p-2 rounded-xl shadow-md font-black text-xs flex items-center gap-1 border-2 border-white">
-                          <DollarSign className="w-3.5 h-3.5" />
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 4 && (
-                      <div className="w-full h-full flex flex-col justify-end p-3 bg-[#efeae2] rounded-2xl relative overflow-hidden border border-slate-200">
-                        {/* Fake chat background */}
-                        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
-                        
-                        <div className="bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[9px] sm:text-[10px] font-bold text-slate-500 shadow-sm self-center mb-auto mt-2 relative z-10">
-                          Today
-                        </div>
-                        
-                        <div className="w-[95%] self-end bg-[#dcf8c6] rounded-2xl rounded-tr-sm p-3 shadow-sm relative z-10 border border-[#cde8b8] mb-3">
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
-                              <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-0.5 fill-current" />
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center gap-0.5 sm:gap-1 h-5 sm:h-6">
-                                {[20, 30, 80, 50, 40, 90, 100, 60, 40, 50, 30, 70, 40, 20].map((h, idx) => (
-                                  <div key={idx} className={`flex-1 rounded-full ${idx < 8 ? 'bg-emerald-500' : 'bg-emerald-300'}`} style={{ height: `${h}%` }} />
-                                ))}
-                              </div>
-                              <div className="flex items-center justify-between mt-1.5">
-                                <span className="text-[9px] sm:text-[10px] text-emerald-700 font-bold">0:08</span>
-                                <div className="flex items-center gap-1">
-                                  <span className="text-[8px] sm:text-[9px] text-emerald-700 font-medium">10:14 AM</span>
-                                  <span className="text-blue-500 text-[10px] font-bold tracking-tighter">✓✓</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
-                              <img src="/avatar_1.jpg" className="w-full h-full object-cover" alt="You" />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="w-[85%] self-start bg-white rounded-2xl rounded-tl-sm p-3 shadow-sm relative z-10 border border-slate-100">
-                          <div className="text-[10px] sm:text-[11px] font-black text-emerald-600 mb-1">ProfitMint AI</div>
-                          <div className="text-[10px] sm:text-[11px] text-slate-700 leading-snug space-y-1.5">
-                            <div>Done! I've drafted a $5k video proposal for Apex Dental and queued it up.</div>
-                            <div className="text-blue-600 font-bold bg-blue-50 p-1.5 rounded-lg border border-blue-100 inline-block">Review Proposal →</div>
-                          </div>
-                          <div className="text-[8px] text-slate-400 text-right mt-1 font-medium">10:15 AM</div>
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 5 && (
-                      <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg space-y-6">
-                        <div className="flex items-center justify-between text-xs sm:text-sm font-black text-slate-800 border-b border-slate-100 pb-3">
-                          <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-blue-600" /> 6-Stage Closing Engine</span>
-                          <span className="text-blue-700 bg-blue-50 px-3 py-1 rounded-md shadow-sm border border-blue-100 text-[10px] sm:text-xs">Stage 5: Proposal</span>
-                        </div>
-                        
-                        <div className="relative">
-                          <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-100 -translate-y-1/2 rounded-full" />
-                          <div className="absolute top-1/2 left-0 w-[83%] h-1 bg-blue-500 -translate-y-1/2 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
-                          
-                          <div className="grid grid-cols-6 gap-2 text-[9px] sm:text-[10px] text-center font-extrabold relative z-10">
-                            {[
-                              { name: 'Score', icon: <Target className="w-3.5 h-3.5 mx-auto mb-1" /> },
-                              { name: 'Reach', icon: <Mail className="w-3.5 h-3.5 mx-auto mb-1" /> },
-                              { name: 'Call', icon: <Phone className="w-3.5 h-3.5 mx-auto mb-1" /> },
-                              { name: 'Book', icon: <Calendar className="w-3.5 h-3.5 mx-auto mb-1" /> },
-                              { name: 'Video', icon: <Play className="w-3.5 h-3.5 mx-auto mb-1 fill-current" /> },
-                              { name: 'Sign', icon: <CheckCircle className="w-3.5 h-3.5 mx-auto mb-1" /> }
-                            ].map((stg, idx) => (
-                              <div key={idx} className={`py-2 px-1 rounded-xl transition-all duration-300 ${idx <= 4 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30 scale-105' : 'bg-white text-slate-400 border-2 border-slate-100 shadow-sm'}`}>
-                                {stg.icon}
-                                <span>{stg.name}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        <div className="bg-gradient-to-r from-slate-50 to-white p-4 rounded-xl border border-slate-200 flex items-center justify-between text-xs sm:text-sm shadow-sm">
-                          <span className="font-extrabold text-slate-800 flex items-center gap-2"><FileText className="w-4 h-4 text-slate-400" /> Coastal Legal Proposal</span>
-                          <span className="text-emerald-600 font-black bg-emerald-50 px-2 py-1 rounded-md border border-emerald-100">$2,400/mo</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 6 && (
-                      <div className="w-full bg-white rounded-2xl p-6 border border-slate-200 shadow-lg space-y-5 text-left">
-                        <div className="flex items-center justify-between pb-2 border-b border-slate-50">
-                          <span className="text-sm font-black text-slate-900 flex items-center gap-2"><Activity className="w-4 h-4 text-emerald-500" /> Apex Consulting</span>
-                          <span className="text-[10px] sm:text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-300 px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" /> Health 8/10
-                          </span>
-                        </div>
-                        
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between text-[10px] font-bold text-slate-500">
-                            <span>Client Retention Score</span>
-                            <span className="text-emerald-600">80%</span>
-                          </div>
-                          <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden border border-slate-200 shadow-inner relative">
-                            <div className="absolute top-0 left-0 h-full w-[80%] bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full" />
-                          </div>
-                        </div>
-
-                        <div className="bg-gradient-to-r from-blue-50 to-indigo-50/50 p-3.5 rounded-xl border border-blue-200/60 flex items-center justify-between text-xs sm:text-sm shadow-sm mt-3 relative overflow-hidden group">
-                          <div className="absolute inset-0 bg-blue-400/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
-                          <span className="font-bold text-blue-900 flex items-center gap-2 relative z-10"><TrendingUp className="w-4 h-4 text-blue-600" /> Upsell Trigger Detected</span>
-                          <span className="text-blue-700 font-black bg-white/60 px-2 py-1 rounded-md relative z-10">+ $800/mo</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 7 && (
-                      <div className="w-full bg-slate-950 text-white rounded-xl p-2.5 border border-slate-800 shadow-sm space-y-2 text-left">
-                        <div className="flex items-center justify-between text-[9px] text-slate-400 border-b border-slate-800 pb-1">
-                          <span className="font-mono text-blue-400 font-bold">1-TAP APPROVAL</span>
-                          <span>Just now</span>
-                        </div>
-                        <div className="text-[10px] font-extrabold text-white">
-                          Send $4,800/mo Proposal to Riverside Dental?
-                        </div>
-                        <div className="flex gap-2 pt-0.5">
-                          <div className="flex-1 bg-emerald-600 text-white text-[9px] font-extrabold py-1 rounded text-center shadow-xs">
-                            ✓ Approve
-                          </div>
-                          <div className="px-2.5 bg-slate-800 text-slate-300 text-[9px] font-bold py-1 rounded text-center">
-                            Reject
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {i === 8 && (
-                      <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg space-y-6">
-                        <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                          <span className="text-xs sm:text-sm font-black text-slate-700 uppercase tracking-widest flex items-center gap-2">
-                            <Zap className="w-4 h-4 text-indigo-500 fill-indigo-500" /> Plug & Play Ecosystem
-                          </span>
-                          <span className="bg-emerald-50 text-emerald-600 px-2.5 py-0.5 rounded-full text-[10px] font-bold border border-emerald-200 flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" /> Live Sync
-                          </span>
-                        </div>
-                        
-                        <div className="relative flex justify-between items-center w-[90%] mx-auto">
-                          {/* Continuous connection line */}
-                          <div className="absolute top-[32%] left-0 w-full h-1 bg-slate-100 -translate-y-1/2 rounded-full overflow-hidden">
-                            <div className="h-full bg-indigo-500/30 w-full animate-pulse" />
-                          </div>
-                          
-                          {/* Nodes */}
-                          {[
-                            { name: 'Stripe', bg: 'bg-indigo-100 text-indigo-700 border-indigo-200', icon: <DollarSign className="w-5 h-5" /> },
-                            { name: 'Calendar', bg: 'bg-blue-100 text-blue-700 border-blue-200', icon: <Calendar className="w-5 h-5" /> },
-                            { name: 'CRM', bg: 'bg-emerald-100 text-emerald-700 border-emerald-200', icon: <Settings className="w-5 h-5" /> },
-                            { name: 'WhatsApp', bg: 'bg-green-100 text-green-700 border-green-200', icon: <MessageSquare className="w-5 h-5" /> }
-                          ].map((item, idx) => (
-                            <div key={idx} className="relative z-10 flex flex-col items-center gap-3 group">
-                              <div className={`w-14 h-14 rounded-2xl ${item.bg} flex items-center justify-center border-2 shadow-sm group-hover:scale-110 transition-transform duration-300 group-hover:shadow-md bg-opacity-90 backdrop-blur-sm`}>
-                                {item.icon}
-                              </div>
-                              <span className="text-[11px] sm:text-xs font-bold text-slate-600 bg-white px-2 py-0.5 rounded-md shadow-2xs border border-slate-100">{item.name}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-400/10 shadow-inner flex items-center justify-center shrink-0 border border-slate-300/30 group-hover:bg-white transition-colors z-10 relative">
+                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-slate-500 group-hover:text-[#605bff] transition-colors" />
                   </div>
-
-                  {/* BOTTOM CARD TEXT & TAG */}
-                  <div className="space-y-2 px-1">
-                    <div className="flex justify-center mb-1">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200/80 px-3 py-0.5 rounded-full">
+                  <div className="flex-1 text-left z-10 relative">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-[#605bff] transition-colors">{p.name}</h3>
+                      <span className="hidden sm:inline-flex text-[9px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-md border border-emerald-200/60">
                         {p.tag}
                       </span>
                     </div>
-                    <h3 className="text-xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors">
-                      {p.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-[280px] mx-auto">
+                    <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed pr-8">
                       {p.desc}
                     </p>
                   </div>
                 </motion.div>
               );
             })}
+          </div>
+
+          <div className="mt-16 flex justify-center">
+            <button 
+              onClick={() => setShowAllFeatures(!showAllFeatures)}
+              className="bg-[#605bff] hover:bg-[#4d48db] text-white font-bold text-sm px-8 py-3.5 rounded-full shadow-lg shadow-[#605bff]/30 transition-all flex items-center gap-2 group"
+            >
+              {showAllFeatures ? 'SHOW LESS' : 'EXPLORE ALL FEATURES'}
+              <ArrowRight className={`w-4 h-4 transition-transform ${showAllFeatures ? '-rotate-90' : 'group-hover:translate-x-1'}`} />
+            </button>
           </div>
         </div>
       </section>
