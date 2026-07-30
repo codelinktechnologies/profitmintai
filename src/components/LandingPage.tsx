@@ -356,7 +356,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
     { tag: 'World First', name: 'AI Search Mint (AEO)', color: 'text-indigo-600', icon: Search, bg: 'bg-indigo-50 border-indigo-200', desc: 'Gets your business cited when potential clients ask ChatGPT or Perplexity for a recommendation.' },
     { tag: 'World First', name: 'ProfitMint Autopilot', color: 'text-sky-600', icon: Zap, bg: 'bg-sky-50 border-sky-200', desc: 'Runs every 4 hours: analyses what worked, shifts effort to what earns the most.' },
     { tag: 'New Category', name: 'Lead Mint Scorer', color: 'text-amber-600', icon: Target, bg: 'bg-amber-50 border-amber-200', desc: 'Forecasts outcomes before acting and scores every lead by likelihood to close.' },
-    { tag: 'WhatsApp First', name: 'WhatsApp Mint Agent', color: 'text-blue-600', icon: Phone, bg: 'bg-blue-50 border-blue-200', desc: 'Speak commands and receive morning voice briefings, right inside WhatsApp.' },
+    { tag: 'WhatsApp First', name: 'WhatsApp Mint Agent', color: 'text-blue-600', icon: Phone, bg: 'bg-blue-50 border-blue-200', desc: 'Speak commands to your AI agent and get instant actions executed, right inside WhatsApp.' },
     { tag: 'Best in Class', name: 'Autonomous Closing Vault', color: 'text-red-600', icon: ShieldCheck, bg: 'bg-red-50 border-red-200', desc: '6-stage pipeline: scoring, outreach, voice pre-qual, booking, video proposal, e-sign.' },
     { tag: 'New Pillar', name: 'LTV Mint Pulse', color: 'text-blue-600', icon: TrendingUp, bg: 'bg-blue-50 border-blue-200', desc: 'Client health scoring, upsell detection, referral automation, and review generation.' },
     { tag: 'Always On', name: 'Mint Approval Queue', color: 'text-sky-600', icon: CheckCircle, bg: 'bg-sky-50 border-sky-200', desc: 'One-tap approve or reject high-value proposals right from your mobile phone.' },
@@ -1093,28 +1093,60 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                   className={`bg-white rounded-[28px] border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col justify-between text-center group ${getBentoClass(i)}`}
                 >
                   {/* TOP PREVIEW GRAPHIC BOX (Benchmark Style) */}
-                  <div className="bg-slate-200/50 shadow-inner rounded-2xl p-4 h-[190px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/60 mb-5 select-none">
+                  <div className="bg-slate-200/50 shadow-inner rounded-2xl py-4 h-[190px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/60 mb-5 select-none">
                     {i === 0 && (
-                      <div className="w-[85%] flex flex-col justify-center items-center gap-4">
-                        <div className="w-full bg-blue-100/70 rounded-2xl p-3 border border-blue-200/60 flex items-center justify-between gap-3 text-xs sm:text-sm">
-                          <div className="bg-white px-4 py-2 rounded-xl text-slate-700 font-bold shadow-sm flex-1 text-left">
-                            Keyword: Dental Implants
+                      <div className="w-full h-full flex flex-col gap-3">
+                        <div className="flex items-center justify-between bg-white/80 p-3 rounded-xl border border-white/60 shadow-sm backdrop-blur-sm">
+                          <div className="flex items-center gap-2">
+                             <Search className="w-4 h-4 text-blue-500" />
+                             <span className="text-[11px] sm:text-xs font-bold text-slate-700">Keyword: Dental Implants</span>
                           </div>
-                          <div className="bg-white px-4 py-2 rounded-xl text-slate-500 font-medium shadow-sm">Status</div>
-                          <div className="bg-white px-4 py-2 rounded-xl text-slate-500 font-medium shadow-sm">Filter</div>
+                          <div className="flex gap-2">
+                            <span className="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[9px] sm:text-[10px] font-bold shadow-xs">Active</span>
+                            <span className="bg-slate-100 text-slate-600 px-2 py-1 rounded text-[9px] sm:text-[10px] font-bold shadow-xs flex items-center gap-1">Filter</span>
+                          </div>
                         </div>
-                        <div className="w-full bg-white rounded-2xl p-5 border border-slate-200 shadow-lg flex items-center justify-between text-left">
-                          <div>
-                            <div className="text-sm sm:text-base font-black text-slate-900">+150 Leads Attributed</div>
-                            <div className="w-32 h-2.5 bg-slate-200 rounded-full mt-2 overflow-hidden shadow-inner">
-                              <div className="bg-blue-600 h-full w-[80%]" />
+                        
+                        <div className="flex-1 bg-white rounded-xl border border-slate-200 shadow-lg p-4 flex flex-col justify-between">
+                          <div className="flex items-start justify-between">
+                            <div className="text-left">
+                              <div className="text-[9px] sm:text-[10px] font-extrabold text-slate-400 uppercase tracking-widest">Total Attributed Revenue</div>
+                              <div className="text-xl sm:text-2xl font-black text-slate-900 mt-0.5">$42,500</div>
+                            </div>
+                            <div className="bg-emerald-50 text-emerald-600 border border-emerald-100 px-2 py-1 rounded-lg text-[10px] font-bold flex items-center gap-1 shadow-sm">
+                              <TrendingUp className="w-3 h-3" /> +24%
                             </div>
                           </div>
-                          <div className="flex items-center -space-x-3">
-                            <img src="/avatar_1.jpg" alt="RD" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-4 border-white shadow-sm z-30" />
-                            <img src="/avatar_2.jpg" alt="CL" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-4 border-white shadow-sm z-20" />
-                            <img src="/avatar_3.jpg" alt="AC" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-4 border-white shadow-sm z-10" />
-                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] sm:text-xs font-black border-4 border-white shadow-sm z-0">100+</div>
+                          
+                          <div className="space-y-3 mt-4 flex-1">
+                            {[
+                              { source: 'AI Search (Perplexity)', amount: '$12,000', leads: 45, color: 'bg-indigo-500' },
+                              { source: 'Automated Outreach', amount: '$18,500', leads: 62, color: 'bg-blue-500' },
+                              { source: 'WhatsApp Conversions', amount: '$12,000', leads: 43, color: 'bg-emerald-500' }
+                            ].map((item, idx) => (
+                              <div key={idx} className="flex items-center justify-between group">
+                                <div className="flex items-center gap-2.5">
+                                  <div className={`w-2 h-2 rounded-full ${item.color} shadow-sm group-hover:scale-150 transition-transform`} />
+                                  <span className="text-[10px] sm:text-[11px] font-bold text-slate-600">{item.source}</span>
+                                </div>
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                  <span className="text-[9px] sm:text-[10px] text-slate-400 font-medium">{item.leads} leads</span>
+                                  <span className="text-[10px] sm:text-[11px] font-black text-slate-800 w-12 text-right">{item.amount}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          
+                          <div className="mt-2 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div className="flex items-center -space-x-2">
+                              <img src="/avatar_1.jpg" alt="RD" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-30" />
+                              <img src="/avatar_2.jpg" alt="CL" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-20" />
+                              <img src="/avatar_3.jpg" alt="AC" className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border-2 border-white shadow-sm z-10" />
+                              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center text-[8px] sm:text-[9px] font-black border-2 border-white shadow-sm z-0">150+</div>
+                            </div>
+                            <div className="text-[9px] sm:text-[10px] text-blue-600 font-bold bg-blue-50 px-2.5 py-1.5 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors">
+                              View Full Report &rarr;
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1205,23 +1237,46 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     )}
 
                     {i === 4 && (
-                      <div className="w-full bg-emerald-950 text-white rounded-2xl p-3 border border-emerald-800 shadow-sm space-y-2 text-left relative overflow-hidden">
-                        <div className="flex items-center justify-between text-[10px]">
-                          <div className="flex items-center gap-1.5 font-extrabold text-emerald-300">
-                            <Phone className="w-3 h-3 text-emerald-400" /> WhatsApp Voice Briefing
-                          </div>
-                          <span className="text-[8px] bg-emerald-900 text-emerald-200 px-1.5 py-0.5 rounded font-mono">08:00 AM</span>
+                      <div className="w-full h-full flex flex-col justify-end p-3 bg-[#efeae2] rounded-2xl relative overflow-hidden border border-slate-200">
+                        {/* Fake chat background */}
+                        <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+                        
+                        <div className="bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[9px] sm:text-[10px] font-bold text-slate-500 shadow-sm self-center mb-auto mt-2 relative z-10">
+                          Today
                         </div>
-                        <div className="bg-emerald-900/90 rounded-xl p-2 flex items-center gap-2 border border-emerald-700/60">
-                          <div className="w-6 h-6 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center font-black text-[9px] shrink-0">
-                            ▶
+                        
+                        <div className="w-[95%] self-end bg-[#dcf8c6] rounded-2xl rounded-tr-sm p-3 shadow-sm relative z-10 border border-[#cde8b8] mb-3">
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                              <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 ml-0.5 fill-current" />
+                            </div>
+                            <div className="flex-1">
+                              <div className="flex items-center gap-0.5 sm:gap-1 h-5 sm:h-6">
+                                {[20, 30, 80, 50, 40, 90, 100, 60, 40, 50, 30, 70, 40, 20].map((h, idx) => (
+                                  <div key={idx} className={`flex-1 rounded-full ${idx < 8 ? 'bg-emerald-500' : 'bg-emerald-300'}`} style={{ height: `${h}%` }} />
+                                ))}
+                              </div>
+                              <div className="flex items-center justify-between mt-1.5">
+                                <span className="text-[9px] sm:text-[10px] text-emerald-700 font-bold">0:08</span>
+                                <div className="flex items-center gap-1">
+                                  <span className="text-[8px] sm:text-[9px] text-emerald-700 font-medium">10:14 AM</span>
+                                  <span className="text-blue-500 text-[10px] font-bold tracking-tighter">✓✓</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-200 border-2 border-white shadow-sm flex items-center justify-center shrink-0 overflow-hidden">
+                              <img src="/avatar_1.jpg" className="w-full h-full object-cover" alt="You" />
+                            </div>
                           </div>
-                          <div className="flex-1 flex items-center gap-0.5 h-4">
-                            {[40, 70, 30, 90, 60, 100, 50, 80, 40, 90, 60, 30, 70, 50].map((h, idx) => (
-                              <div key={idx} className="flex-1 bg-emerald-400 rounded-full" style={{ height: `${h}%` }} />
-                            ))}
+                        </div>
+
+                        <div className="w-[85%] self-start bg-white rounded-2xl rounded-tl-sm p-3 shadow-sm relative z-10 border border-slate-100">
+                          <div className="text-[10px] sm:text-[11px] font-black text-emerald-600 mb-1">ProfitMint AI</div>
+                          <div className="text-[10px] sm:text-[11px] text-slate-700 leading-snug space-y-1.5">
+                            <div>Done! I've drafted a $5k video proposal for Apex Dental and queued it up.</div>
+                            <div className="text-blue-600 font-bold bg-blue-50 p-1.5 rounded-lg border border-blue-100 inline-block">Review Proposal →</div>
                           </div>
-                          <span className="text-[8px] text-emerald-300 font-mono shrink-0">0:42</span>
+                          <div className="text-[8px] text-slate-400 text-right mt-1 font-medium">10:15 AM</div>
                         </div>
                       </div>
                     )}
@@ -1382,8 +1437,13 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             {/* STEP 01 */}
             <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
-                <div className="w-full flex flex-col justify-center items-center gap-2 relative">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[240px] w-full flex flex-col relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+                <div className="flex justify-end w-full shrink-0">
+                  <div className="bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800 z-10">
+                    01
+                  </div>
+                </div>
+                <div className="w-full flex-1 flex flex-col justify-center items-center gap-2 relative z-0 mt-2">
                   {/* Onboarding Form Mockup */}
                   <div className="w-full bg-white rounded-xl p-3 border border-slate-200 shadow-sm space-y-2 text-left">
                     <div className="flex items-center justify-between text-[10px]">
@@ -1410,10 +1470,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     </span>
                     <span className="text-[8px] bg-emerald-600 text-white font-black px-1.5 py-0.5 rounded">Active</span>
                   </div>
-                  {/* Step Number Tag */}
-                  <div className="absolute -top-1 -right-1 bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800">
-                    01
-                  </div>
                 </div>
               </div>
 
@@ -1434,8 +1490,13 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             {/* STEP 02 */}
             <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
-                <div className="w-full flex flex-col justify-center items-center gap-2 relative">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[240px] w-full flex flex-col relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+                <div className="flex justify-end w-full shrink-0">
+                  <div className="bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800 z-10">
+                    02
+                  </div>
+                </div>
+                <div className="w-full flex-1 flex flex-col justify-center items-center gap-2 relative z-0 mt-2">
                   {/* Automated Execution Pipeline */}
                   <div className="w-full bg-white rounded-xl p-2.5 border border-slate-200 shadow-sm space-y-2 text-left">
                     <div className="flex items-center justify-between text-[10px]">
@@ -1467,10 +1528,6 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
                     </div>
                     <span className="text-[8px] text-emerald-400 font-mono font-bold">$4,800/mo</span>
                   </div>
-                  {/* Step Number Tag */}
-                  <div className="absolute -top-1 -right-1 bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800">
-                    02
-                  </div>
                 </div>
               </div>
 
@@ -1491,39 +1548,50 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             {/* STEP 03 */}
             <div className="bg-white rounded-lg border border-slate-200/80 shadow-xl shadow-slate-300/60 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
               {/* TOP PREVIEW GRAPHIC BOX */}
-              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[210px] w-full flex flex-col justify-center items-center relative overflow-hidden border border-slate-200/70 mb-5 select-none">
-                <div className="w-full flex flex-col justify-center items-center gap-2 relative">
-                  {/* WhatsApp Voice Briefing Card */}
-                  <div className="w-full bg-emerald-950 text-white rounded-xl p-3 border border-emerald-800 shadow-md space-y-2 text-left">
-                    <div className="flex items-center justify-between text-[10px]">
-                      <span className="font-extrabold text-emerald-300 flex items-center gap-1.5">
-                        <MessageSquare className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20" /> WhatsApp Morning Briefing
-                      </span>
-                      <span className="text-[8px] bg-emerald-900 text-emerald-200 px-1.5 py-0.5 rounded font-mono">08:00 AM</span>
-                    </div>
-                    <div className="bg-emerald-900/90 rounded-lg p-2 flex items-center gap-2 border border-emerald-700/60">
-                      <div className="w-6 h-6 rounded-full bg-emerald-400 text-slate-950 flex items-center justify-center font-black text-[9px] shrink-0 shadow-2xs">
-                        ▶
-                      </div>
-                      <div className="flex-1 flex items-center gap-0.5 h-4">
-                        {[40, 70, 30, 90, 60, 100, 50, 80, 40, 90, 60, 30, 70, 50].map((h, idx) => (
-                          <div key={idx} className="flex-1 bg-emerald-400 rounded-full" style={{ height: `${h}%` }} />
-                        ))}
-                      </div>
-                      <span className="text-[8px] text-emerald-300 font-mono shrink-0">0:42</span>
-                    </div>
-                  </div>
-                  {/* Revenue Summary Pill */}
-                  <div className="w-full bg-white rounded-xl p-2 border border-slate-200 shadow-xs flex items-center justify-between text-[10px] text-slate-900 font-extrabold">
-                    <span className="flex items-center gap-1 text-emerald-700">
-                      <TrendingUp className="w-3 h-3" /> +$4,800 Earned Overnight
-                    </span>
-                    <span className="text-slate-500 font-medium">2 Calls Booked</span>
-                  </div>
-                  {/* Step Number Tag */}
-                  <div className="absolute -top-1 -right-1 bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800">
+              <div className="bg-slate-200/50 shadow-inner rounded-md p-4 h-[240px] w-full flex flex-col relative overflow-hidden border border-slate-200/70 mb-5 select-none">
+                <div className="flex justify-end w-full shrink-0">
+                  <div className="bg-slate-900 text-white font-black text-xs px-2.5 py-1 rounded-xl shadow-md border border-slate-800 z-10">
                     03
                   </div>
+                </div>
+                <div className="w-full flex-1 flex flex-col justify-center items-center relative z-0">
+                  
+                  <div className="w-full h-full flex flex-col justify-end p-2 sm:p-3 bg-[#efeae2] rounded-xl relative overflow-hidden border border-slate-200 shadow-sm mt-2">
+                    {/* Fake chat background */}
+                    <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+                    
+                    <div className="w-[85%] self-start bg-white rounded-2xl rounded-tl-sm p-2 sm:p-2.5 shadow-sm relative z-10 mb-2 border border-slate-100">
+                      <div className="text-[9px] sm:text-[10px] font-black text-emerald-600 mb-1">ProfitMint AI</div>
+                      <div className="text-[9px] sm:text-[10px] text-slate-700 leading-snug">
+                        Morning! Added $4,800 to pipeline overnight. 2 calls booked.
+                      </div>
+                      <div className="text-[7px] sm:text-[8px] text-slate-400 text-right mt-1 font-medium">07:59 AM</div>
+                    </div>
+
+                    <div className="w-[95%] self-end bg-[#dcf8c6] rounded-2xl rounded-tr-sm p-2 sm:p-2.5 shadow-sm relative z-10 border border-[#cde8b8] mb-1">
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-sm">
+                          <Play className="w-3 h-3 ml-0.5 fill-current" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-0.5 h-4 sm:h-5">
+                            {[30, 50, 40, 80, 60, 100, 40, 70, 30, 90, 50, 60, 30, 80, 40].map((h, idx) => (
+                              <div key={idx} className={`flex-1 rounded-full ${idx < 5 ? 'bg-emerald-500' : 'bg-emerald-300'}`} style={{ height: `${h}%` }} />
+                            ))}
+                          </div>
+                          <div className="flex items-center justify-between mt-1">
+                            <span className="text-[8px] sm:text-[9px] text-emerald-700 font-bold">0:42</span>
+                            <div className="flex items-center gap-1">
+                              <span className="text-[7px] sm:text-[8px] text-emerald-700 font-medium">08:00 AM</span>
+                              <span className="text-blue-500 text-[8px] font-bold tracking-tighter">✓✓</span>
+                            </div>
+                          </div>
+                        </div>
+                        <img src="/avatar_1.jpg" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-emerald-100 shadow-sm object-cover" alt="Agent" />
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
