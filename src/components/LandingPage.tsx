@@ -1057,11 +1057,11 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
         {/* Radar Background */}
         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
           {/* Mascot behind the wheel */}
-          <div className="absolute inset-x-0 bottom-0 top-[20%] flex items-center justify-center opacity-75 z-0 scale-125 md:scale-100">
+          <div className="absolute inset-0 top-[260px] md:top-[20%] flex items-start md:items-center justify-center opacity-75 z-0 scale-100">
             <img src="/mascot.png" alt="Mascot" className="h-auto max-h-[800px] w-auto object-contain" />
           </div>
           
-          <div className="absolute inset-0 flex items-center justify-center opacity-[0.60] z-10">
+          <div className="absolute inset-0 top-[260px] md:top-0 flex items-start md:items-center justify-center opacity-[0.60] z-10">
             <svg width="1000" height="1000" viewBox="0 0 1000 1000" className="animate-[spin_30s_linear_infinite]">
             <circle cx="500" cy="500" r="150" fill="none" stroke="#605bff" strokeWidth="1.5" strokeDasharray="4 6" />
             <circle cx="500" cy="500" r="250" fill="none" stroke="#605bff" strokeWidth="1" />
