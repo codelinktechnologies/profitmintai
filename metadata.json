@@ -1,0 +1,6 @@
+{
+  "name": "ProfitMint AI",
+  "description": "ProfitMint AI is an autonomous AI client acquisition and business intelligence platform for service business owners featuring real-time income attribution, search optimization, and automated outreach pipeline.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
