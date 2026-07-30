@@ -1057,8 +1057,8 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
         {/* Radar Background */}
         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
           {/* Mascot behind the wheel */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-40 z-0 scale-125 md:scale-100">
-            <img src="/mascot.jpg" alt="Mascot" className="h-auto max-h-[800px] w-auto object-contain mix-blend-multiply" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-75 z-0 scale-125 md:scale-100">
+            <img src="/mascot.png" alt="Mascot" className="h-auto max-h-[800px] w-auto object-contain" />
           </div>
           
           <div className="absolute inset-0 flex items-center justify-center opacity-[0.60] z-10">
