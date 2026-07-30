@@ -1725,7 +1725,7 @@ export default function LandingPage({ onStartDemo, onGoToLogin, onGoToWizard }: 
             <span className="text-slate-400">— Autonomous Growth Engine</span>
           </div>
           <div className="text-slate-400">
-            © 2026 ProfitMint AI. All rights reserved. · Terms · Privacy · Support
+            © 2026 Pextella. All rights reserved. · Terms · Privacy · Support
           </div>
         </div>
       </footer>
